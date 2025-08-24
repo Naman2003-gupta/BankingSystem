@@ -18,7 +18,7 @@
         <script src="https://kit.fontawesome.com/29d0d4479a.js" crossorigin="anonymous"></script>
 </head>
  
-     <title>SparkPC | Transfer Money</title>
+     <title>Naman Corporation Bank | Transfer Money</title>
  
  <body>
  <header>
@@ -215,7 +215,7 @@
  <div class="footer">
      <!--footer centre-->
      <div class="footer-center">
-         <p class="footer-company-name">© SparkPC Bank 2021 | Designed by Prathamesh Chougule</p>
+         <p class="footer-company-name">© Naman Corporation Bank 2021 | Designed by Naman Gupta</p>
                  
      </div>		
  </div>

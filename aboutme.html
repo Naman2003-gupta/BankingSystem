@@ -1,82 +1,145 @@
-<!--
-	This is Html souce code od bank system for intrenship of Spark Foundation
-	The Code is written by me (Prathamesh Chougule)
- -->
- <!DOCTYPE html>
- <html lang="en">
- <head>
-		 <meta charset="UTF-8">
-		 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-		 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		 <!--header -->
-		 <link rel="stylesheet" type="text/css" href="css\header.css">
-		 <!--footer -->
-		 <link rel="stylesheet" type="text/css" href="css\footer.css">
-		 <!--main css  -->
-		   <link rel="stylesheet" type="text/css" href="css\about.css">
-		 <!--external  -->
-		 <script src="https://kit.fontawesome.com/29d0d4479a.js" crossorigin="anonymous"></script>	  
- </head>
- 
-	 <title>SPARKPC | Home</title>
- 
- <body>
- <header>
- <!--navbar-->
- <div id="navbar">
- <nav>
-	  <div class="logo"><img src="images/logo.png"></div>
-		 <input type="checkbox" id="click">
-		  <label for="click" class="menu-btn">
-				 <i class="fas fa-bars"></i>
-		   </label>
-		 <ul>
-			 <li><a href="index.html">Home</a></li>
- 
-			 <li><a class="active" href="aboutme.html">About</a></li>
- 
-			 <li><a href="contactus.html">Contact US</a></li>
- 
-		 </ul>
-	 </div>
- </nav>
- </div>
- </header>
- <!--nav end header end-->
- <!--main section-->
-	<div class="section">
-		<div class="container">
-			<div class="content-section">
-				<div class="title">
-					<h1>About ME</h1>
-				</div>
-				<div class="content">
-					<h3>Naman Gupta</h3>
-					<p>I’m goal oriented, focused and deadline driven computer science and engineering undergraduate student.</p>
-				</div>
-				<div class="social">
-					<a href="https://www.linkedin.com/in/prathamesh-chougule-49b6b4218/"><i class="fa fa-linkedin"></i></a>
-					<a href="https://www.facebook.com/prathamesh.chougule.1232/"><i class="fab fa-facebook-f"></i></a>
-					<a href="https://twitter.com/prathamesh_pc14"><i class="fab fa-twitter"></i></a>
-					<a href="https://www.instagram.com/i.am.prathamesh.pc/"><i class="fab fa-instagram"></i></a>
-				</div>
-			</div>
-			<div class="image-section">
-				<img src="images/pcformal.jpeg">
-			</div>
-		</div>
-	</div>
-<!--end Main-->
-<!--footer-->
-<footer>
-	<div class="footer">
-		<!--footer centre-->
-		<div class="footer-center">
-			<p class="footer-company-name">© SparkPC Bank 2021 | Designed by Naman Gupta</p>
-					
-		</div>		
-	</div>
-	</footer>	
-	<!--end footer-->
-	</body>
-	</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | Naman Corporation Bank</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      color: #333;
+    }
+    /* Navbar */
+    .navbar {
+      background: #003366;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    .navbar ul li {
+      margin: 0 12px;
+    }
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .navbar ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* About Section */
+    .about-section {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    }
+    .about-section h1 {
+      text-align: center;
+      font-size: 36px;
+      color: #003366;
+      margin-bottom: 20px;
+    }
+    .about-section p {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    /* Mission & Vision */
+    .mission-vision {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    .mission-vision .card {
+      background: #f8f9fb;
+      border-left: 6px solid #003366;
+      padding: 20px;
+      width: 45%;
+      margin: 10px;
+      border-radius: 6px;
+      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+    }
+    .mission-vision h2 {
+      color: #003366;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo"><h2>Naman Bank</h2></div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="contactus.html">Contact</a></li>
+    </ul>
+  </div>
+
+  <!-- About Section -->
+  <div class="about-section">
+    <h1>About Naman Corporation Bank</h1>
+    <p>
+      Established with a vision of excellence, <b>Naman Corporation Bank</b> has been a trusted financial institution 
+      dedicated to empowering individuals and businesses with innovative banking solutions.  
+      We pride ourselves on offering secure, reliable, and customer-friendly services, combining technology with tradition.  
+    </p>
+    <p>
+      From personal banking to corporate solutions, we are committed to delivering financial products that meet the evolving needs of our customers.  
+      Our focus is on transparency, trust, and long-term relationships with the communities we serve.  
+    </p>
+
+    <!-- Mission & Vision -->
+    <div class="mission-vision">
+      <div class="card">
+        <h2>Our Mission</h2>
+        <p>
+          To deliver world-class banking services that are customer-centric, technology-driven, 
+          and accessible to everyone, everywhere.
+        </p>
+      </div>
+      <div class="card">
+        <h2>Our Vision</h2>
+        <p>
+          To be the most trusted and innovative financial institution, 
+          empowering dreams and shaping a financially strong future.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p>© 2025 Naman Corporation Bank | All Rights Reserved</p>
+  </div>
+
+</body>
+</html>

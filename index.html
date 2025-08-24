@@ -1,75 +1,236 @@
-<!--
-	This is Html souce code od bank system for intrenship of Spark Foundation
-	The Code is written by me (Prathamesh Chougule)
- -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<!--header -->
-		<link rel="stylesheet" type="text/css" href="css\header.css">
-		<!--footer -->
-		<link rel="stylesheet" type="text/css" href="css\footer.css">
-		<!--main css  -->
-	  	<link rel="stylesheet" type="text/css" href="css\style.css">
-		<!--external  -->
-		<script src="https://kit.fontawesome.com/29d0d4479a.js" crossorigin="anonymous"></script>	  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Naman Corporation Bank | Home</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f8f9fb;
+      color: #333;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #003366;
+      color: white;
+      padding: 12px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .navbar ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    .navbar ul li {
+      margin: 0 12px;
+    }
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .navbar .quote {
+      font-size: 16px;
+      font-style: italic;
+      font-weight: bold;
+      color: #ffcc00;
+    }
+
+    /* Moving Notice */
+    .notice {
+      background: #ffeb99;
+      color: #b30000;
+      font-weight: bold;
+      padding: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .notice span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: move 15s linear infinite;
+    }
+    @keyframes move {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Banner Image */
+    .banner {
+      width: 100%;
+      height: 150px;
+      background: url("images/naman_bank_banner.png") no-repeat center;
+      background-size: contain;
+      margin-top: 5px;
+    }
+
+    /* Main section */
+    .main-section {
+      display: flex;
+      justify-content: space-around;
+      margin: 30px;
+    }
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      width: 45%;
+      text-align: center;
+    }
+    .card h2 {
+      color: #003366;
+    }
+    .login-btn {
+      background: #003366;
+      color: white;
+      padding: 10px 20px;
+      margin: 15px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .login-btn:hover {
+      background: #0055a5;
+    }
+    .card-links {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+    }
+    .card-links div {
+      text-align: center;
+    }
+    .card-links div p {
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #f0f0f0;
+      padding: 20px;
+      margin-top: 40px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-links ul li {
+      margin: 6px 0;
+    }
+    .footer-links ul li a {
+      text-decoration: none;
+      color: #003366;
+      font-size: 14px;
+    }
+    .footer-bottom {
+      text-align: right;
+      font-size: 13px;
+      color: #555;
+      margin-top: 15px;
+      padding-right: 20px;
+    }
+  </style>
 </head>
-
-	<title>SPARKPC | Home</title>
-
 <body>
-<header>
-<!--navbar-->
-<div id="navbar">
-<nav>
-     <div class="logo"><img src="images/logo.png"></div>
-		<input type="checkbox" id="click">
-     	<label for="click" class="menu-btn">
-        		<i class="fas fa-bars"></i>
-      	</label>
-    	<ul>
-			<li><a class="active" href="index.html">Home</a></li>
 
-			<li><a href="aboutme.html">About</a></li>
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="quote">"Your Money, Our Responsibility - NAMAN CORPORATION BANK "</div>
+    <ul>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="aboutme.html">About</a></li>
+      <li><a href="contactus.html">Contact Us</a></li>
+    </ul>
+  </div>
 
-			<li><a href="contactus.html">Contact US</a></li>
+  <!-- Moving Notice -->
+  <div class="notice">
+    <span>Customers can now deposit Income Tax / Corporate Taxes using all Bank Debit Cards and Credit Cards under Naman Bank Payment Gateway | Mandatory Profile password change after 365 days introduced for added security | Call us toll free on 1800 1234 for support</span>
+  </div>
 
-		</ul>
-	</div>
-</nav>
-</div>
-</header>
-<!--nav end header end-->
-<!--main section-->
-<section>
-	<div class="bank-name">
-		<h2>Welcome to the
-		<span>SparkPC Bank</span></h2>
-	</div>
-	<P>To transfer money from one to other click on <span>View All Customer</span> Button</P>
-	<div class="container">
-		<div class="main">
-			<a href="customer.php"><button>View All Customers</button></a>	
-		</div>
-		<div class="main">
-			<a href="transferhistory.php"><button>Transactions</button></a>	
-		</div>
-	</div>
-</section>
-<!--end Main-->
-<!--footer-->
-<footer>
-<div class="footer">
-	<!--footer centre-->
-	<div class="footer-center">
-		<p class="footer-company-name">© SparkPC Bank 2021 | Designed by Prathamesh Chougule</p>
-				
-	</div>		
-</div>
-</footer>	
-<!--end footer-->
+  <!-- Banner Image -->
+  <div class="banner"></div>
+
+  <!-- Main Section -->
+  <div class="main-section">
+    <!-- Personal Banking -->
+    <div class="card">
+      <h2>Personal Banking</h2>
+      <button class="login-btn" onclick="window.location.href='personal_login.html'">LOGIN</button>
+      <div class="card-links">
+        <div>
+          <img src="images/user.png" width="40"><p>New User<br>Registration</p>
+        </div>
+        <div>
+          <img src="images/help.png" width="40"><p>Check Balance</p>
+        </div>
+        <div>
+          <img src="images/customer.png" width="40"><p>Passbook</p>
+        </div>
+        <div>
+          <img src="images/lock.png" width="40"><p>Transactions</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Corporate Banking -->
+    <div class="card">
+      <h2>Corporate Banking</h2>
+      <button class="login-btn" onclick="window.location.href='corporate_login.html'">LOGIN</button>
+      <div class="card-links">
+        <div>
+          <img src="images/user.png" width="40"><p>View All Customers</p>
+        </div>
+        <div>
+          <img src="images/help.png" width="40"><p>Money Transfer</p>
+        </div>
+        <div>
+          <img src="images/customer.png" width="40"><p>Transaction History</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-links">
+      <ul>
+        <li><a href="#">Block ATM Card</a></li>
+        <li><a href="#">NRI Services</a></li>
+        <li><a href="#">Bank Insurance</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Cyber Crime Helpline</a></li>
+        <li><a href="#">Mutual Fund</a></li>
+        <li><a href="#">Salary Account</a></li>
+      </ul>
+      <ul>
+        <li><a href="#">Doorstep Banking</a></li>
+        <li><a href="#">Retail Direct</a></li>
+        <li><a href="#">General Insurance</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      © Naman Corporation Bank 2025 | Designed by Naman Gupta
+    </div>
+  </div>
+
 </body>
 </html>
