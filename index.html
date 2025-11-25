@@ -3,189 +3,1360 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Naman Corporation Bank | Home</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="description" content="Naman Corporation Bank - Secure, reliable banking solutions for personal and corporate needs">
+  <meta name="keywords" content="banking, finance, loans, savings, corporate banking">
+  <title>Naman Corporation Bank | Secure Banking Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f8f9fb;
-      color: #333;
+    :root {
+      --primary-blue: #003d7a;
+      --dark-blue: #001a33;
+      --gold: #ffd700;
+      --light-gold: #ffed4e;
+      --success: #28a745;
+      --warning: #ffc107;
+      --danger: #d32f2f;
+      --light-bg: #f5f7fa;
+      --card-shadow: 0 10px 30px rgba(0,0,0,0.12);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
-    /* Navbar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+      color: #2c3e50;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 20% 50%, rgba(0,61,122,0.05) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(255,215,0,0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Enhanced Navbar */
     .navbar {
-      background: #003366;
+      background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
       color: white;
-      padding: 12px 30px;
+      padding: 16px 50px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
     }
+
+    .navbar.scrolled {
+      padding: 12px 50px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+      background: linear-gradient(135deg, rgba(0,26,51,0.95) 0%, rgba(0,61,122,0.95) 100%);
+    }
+
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .bank-logo {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--gold), var(--light-gold));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 24px;
+      color: var(--primary-blue);
+      box-shadow: 0 4px 8px rgba(255,215,0,0.4);
+      animation: pulse 2s infinite;
+      transition: var(--transition);
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .navbar .quote {
+      font-size: 18px;
+      font-weight: 600;
+      background: linear-gradient(90deg, var(--gold), var(--light-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
     .navbar ul {
       list-style: none;
-      margin: 0;
-      padding: 0;
       display: flex;
+      gap: 30px;
+      align-items: center;
     }
-    .navbar ul li {
-      margin: 0 12px;
-    }
+
     .navbar ul li a {
       color: white;
       text-decoration: none;
-      font-weight: bold;
-    }
-    .navbar .quote {
-      font-size: 16px;
-      font-style: italic;
-      font-weight: bold;
-      color: #ffcc00;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: var(--transition);
+      position: relative;
     }
 
-    /* Moving Notice */
-    .notice {
-      background: #ffeb99;
-      color: #b30000;
-      font-weight: bold;
-      padding: 8px;
-      white-space: nowrap;
-      overflow: hidden;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    .navbar ul li a:hover {
+      background: rgba(255,255,255,0.15);
+      transform: translateY(-2px);
     }
+
+    .navbar ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: var(--transition);
+      transform: translateX(-50%);
+    }
+
+    .navbar ul li a:hover::after {
+      width: 80%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 3px;
+      background: white;
+      margin: 3px 0;
+      transition: var(--transition);
+    }
+
+    /* Enhanced Moving Notice */
+    .notice-container {
+      background: linear-gradient(90deg, #fff3cd 0%, #fffaeb 50%, #fff3cd 100%);
+      border-bottom: 3px solid var(--warning);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .notice {
+      color: var(--danger);
+      font-weight: 600;
+      padding: 12px 0;
+      white-space: nowrap;
+      font-size: 15px;
+    }
+
     .notice span {
       display: inline-block;
       padding-left: 100%;
-      animation: move 15s linear infinite;
+      animation: scroll 25s linear infinite;
     }
-    @keyframes move {
+
+    @keyframes scroll {
       0% { transform: translateX(0%); }
       100% { transform: translateX(-100%); }
     }
 
-    /* Banner Image */
-    .banner {
-      width: 100%;
-      height: 150px;
-      background: url("images/naman_bank_banner.png") no-repeat center;
-      background-size: contain;
-      margin-top: 5px;
+    .notice::before {
+      content: '⚠️ IMPORTANT: ';
+      font-weight: 700;
+      margin-right: 10px;
     }
 
-    /* Main section */
-    .main-section {
-      display: flex;
-      justify-content: space-around;
-      margin: 30px;
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+      padding: 60px 50px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
     }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-30px); }
+    }
+
+    .hero-section h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      animation: fadeInDown 1s ease;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-section p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      opacity: 0.95;
+      animation: fadeIn 1.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      text-align: center;
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stat-number {
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 16px;
+      opacity: 0.9;
+      margin-top: 8px;
+    }
+
+    /* Main Section */
+    .main-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+      gap: 40px;
+      margin: 50px auto;
+      max-width: 1400px;
+      padding: 0 50px;
+    }
+
     .card {
       background: white;
-      padding: 25px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-      width: 45%;
-      text-align: center;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
     }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary-blue), var(--gold));
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+
     .card h2 {
-      color: #003366;
+      color: var(--primary-blue);
+      font-size: 32px;
+      margin-bottom: 25px;
+      text-align: center;
+      font-weight: 700;
+      position: relative;
+      padding-bottom: 15px;
     }
+
+    .card h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-blue), var(--gold));
+      border-radius: 2px;
+    }
+
+    .login-section {
+      text-align: center;
+      margin: 30px 0;
+    }
+
     .login-btn {
-      background: #003366;
+      background: linear-gradient(135deg, var(--primary-blue) 0%, #0055a5 100%);
       color: white;
-      padding: 10px 20px;
-      margin: 15px 0;
+      padding: 14px 50px;
       border: none;
-      border-radius: 4px;
+      border-radius: 30px;
       cursor: pointer;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 16px;
+      box-shadow: 0 6px 20px rgba(0,61,122,0.3);
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      overflow: hidden;
     }
+
+    .login-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transform: translate(-50%, -50%);
+      transition: all 0.6s ease;
+    }
+
+    .login-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
     .login-btn:hover {
-      background: #0055a5;
+      background: linear-gradient(135deg, #0055a5 0%, #007bff 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(0,61,122,0.5);
     }
+
+    .login-btn:active {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0,61,122,0.4);
+    }
+
     .card-links {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 25px;
+      margin-top: 35px;
     }
+
     .card-links div {
       text-align: center;
+      padding: 20px 15px;
+      border-radius: 12px;
+      transition: var(--transition);
+      cursor: pointer;
+      background: #f8f9fa;
+      position: relative;
+      overflow: hidden;
     }
-    .card-links div p {
-      margin-top: 8px;
+
+    .card-links div::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(0,61,122,0.1);
+      transform: translate(-50%, -50%);
+      transition: all 0.5s ease;
+    }
+
+    .card-links div:hover::before {
+      width: 200%;
+      height: 200%;
+    }
+
+    .card-links div:hover {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      transform: scale(1.08);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    .card-links div:active {
+      transform: scale(0.98);
+    }
+
+    .icon-wrapper {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary-blue), #0055a5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 12px;
+      font-size: 28px;
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(0,61,122,0.3);
+    }
+
+    .card-links div:hover .icon-wrapper {
+      transform: rotateY(360deg);
+      box-shadow: 0 6px 20px rgba(0,61,122,0.4);
+    }
+
+    .card-links p {
       font-size: 14px;
+      font-weight: 500;
+      color: #2c3e50;
+      margin-top: 10px;
+    }
+
+    /* Features Section */
+    .features-section {
+      background: white;
+      padding: 60px 50px;
+      margin: 50px 0;
+    }
+
+    .features-title {
+      text-align: center;
+      font-size: 36px;
+      color: var(--primary-blue);
+      margin-bottom: 50px;
+      font-weight: 700;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 35px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      transition: var(--transition);
+      border: 2px solid #e8ecf1;
+    }
+
+    .feature-card:hover {
+      border-color: var(--primary-blue);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+
+    .feature-icon {
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      color: var(--primary-blue);
+      margin-bottom: 15px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .feature-card p {
+      color: #5a6c7d;
+      font-size: 14px;
+      line-height: 1.8;
     }
 
     /* Footer */
     .footer {
-      background: #f0f0f0;
-      padding: 20px;
-      margin-top: 40px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+      color: white;
+      padding: 50px 50px 30px;
+      margin-top: 60px;
     }
-    .footer-links {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto 40px;
     }
-    .footer-links ul {
+
+    .footer-section h3 {
+      color: var(--gold);
+      margin-bottom: 20px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .footer-section ul {
       list-style: none;
-      padding: 0;
     }
-    .footer-links ul li {
-      margin: 6px 0;
+
+    .footer-section ul li {
+      margin: 12px 0;
     }
-    .footer-links ul li a {
+
+    .footer-section ul li a {
+      color: #b8c5d6;
       text-decoration: none;
-      color: #003366;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .footer-section ul li a:hover {
+      color: var(--gold);
+      transform: translateX(5px);
+    }
+
+    .footer-section p {
+      color: #b8c5d6;
+      line-height: 1.8;
       font-size: 14px;
     }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .social-icon:hover {
+      background: var(--gold);
+      transform: translateY(-5px);
+    }
+
     .footer-bottom {
-      text-align: right;
-      font-size: 13px;
-      color: #555;
-      margin-top: 15px;
-      padding-right: 20px;
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #8b95a5;
+      font-size: 14px;
+    }
+
+    .footer-bottom p {
+      margin: 8px 0;
+    }
+
+    /* Security Badge */
+    .security-badge {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, var(--success), #20c997);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 30px;
+      box-shadow: 0 6px 20px rgba(40,167,69,0.4);
+      font-weight: 600;
+      font-size: 14px;
+      z-index: 999;
+      animation: slideInRight 1s ease;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    @keyframes slideInRight {
+      from {
+        transform: translateX(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .security-badge:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 30px rgba(40,167,69,0.5);
+    }
+
+    .security-badge::before {
+      content: '🔒 ';
+      margin-right: 8px;
+    }
+
+    /* Quick Actions Floating Button */
+    .quick-actions {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      z-index: 999;
+    }
+
+    .quick-action-btn {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary-blue), #0055a5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0,61,122,0.4);
+      transition: var(--transition);
+      animation: slideInLeft 1s ease;
+    }
+
+    @keyframes slideInLeft {
+      from {
+        transform: translateX(-100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .quick-action-btn:hover {
+      transform: rotate(90deg) scale(1.1);
+      box-shadow: 0 8px 30px rgba(0,61,122,0.5);
+    }
+
+    /* Quick Actions Menu */
+    .quick-menu {
+      position: absolute;
+      bottom: 70px;
+      left: 0;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      padding: 15px;
+      min-width: 200px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: var(--transition);
+      z-index: 1000;
+    }
+
+    .quick-menu.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .quick-menu-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .quick-menu-item:hover {
+      background: #f5f7fa;
+    }
+
+    .quick-menu-item i {
+      font-size: 18px;
+      color: var(--primary-blue);
+      width: 20px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .main-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      
+      .hero-stats {
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 12px 20px;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        text-align: center;
+        display: none;
+      }
+
+      .navbar ul.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+      }
+
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+      }
+
+      .hero-section {
+        padding: 40px 20px;
+      }
+
+      .hero-section h1 {
+        font-size: 32px;
+      }
+
+      .hero-stats {
+        gap: 30px;
+      }
+
+      .main-section {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+        gap: 25px;
+      }
+
+      .card {
+        padding: 25px;
+      }
+
+      .card-links {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+
+      .features-section {
+        padding: 40px 20px;
+      }
+
+      .footer {
+        padding: 40px 20px 20px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .security-badge {
+        bottom: 15px;
+        right: 15px;
+        font-size: 12px;
+        padding: 10px 15px;
+      }
+
+      .quick-actions {
+        bottom: 80px;
+        left: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card-links {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero-stats {
+        gap: 20px;
+      }
+      
+      .stat-number {
+        font-size: 32px;
+      }
+    }
+
+    /* Loading Animation */
+    @keyframes shimmer {
+      0% { background-position: -1000px 0; }
+      100% { background-position: 1000px 0; }
+    }
+
+    .loading-shimmer {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 1000px 100%;
+      animation: shimmer 2s infinite;
+    }
+
+    /* Notification Toast */
+    .toast {
+      position: fixed;
+      top: 100px;
+      right: 30px;
+      background: white;
+      padding: 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      transform: translateX(400px);
+      opacity: 0;
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: 10000;
+      min-width: 300px;
+      border-left: 4px solid var(--success);
+    }
+
+    .toast.show {
+      transform: translateX(0);
+      opacity: 1;
+    }
+
+    .toast-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .toast-content {
+      flex-grow: 1;
+    }
+
+    .toast-title {
+      font-weight: 600;
+      color: var(--primary-blue);
+      margin-bottom: 4px;
+    }
+
+    .toast-message {
+      font-size: 14px;
+      color: #5a6c7d;
+    }
+
+    .toast-close {
+      font-size: 20px;
+      cursor: pointer;
+      color: #999;
+      transition: color 0.3s ease;
+    }
+
+    .toast-close:hover {
+      color: #333;
+    }
+
+    /* Modal */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      max-width: 500px;
+      width: 90%;
+      transform: scale(0.7);
+      transition: transform 0.3s ease;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal.active .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #999;
+      transition: color 0.3s ease;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: var(--danger);
+      transform: rotate(90deg);
+    }
+
+    .modal-title {
+      font-size: 28px;
+      color: var(--primary-blue);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .modal-text {
+      color: #5a6c7d;
+      line-height: 1.8;
+      margin-bottom: 25px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: flex-end;
+    }
+
+    .modal-btn {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+      font-size: 14px;
+    }
+
+    .modal-btn-primary {
+      background: linear-gradient(135deg, var(--primary-blue), #0055a5);
+      color: white;
+    }
+
+    .modal-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,61,122,0.4);
+    }
+
+    .modal-btn-secondary {
+      background: #e8ecf1;
+      color: #5a6c7d;
+    }
+
+    .modal-btn-secondary:hover {
+      background: #d4dae0;
+    }
+
+    /* Progress Bar */
+    .progress-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(255,255,255,0.3);
+      z-index: 10001;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--gold), var(--light-gold));
+      width: 0%;
+      transition: width 0.3s ease;
+      box-shadow: 0 0 10px rgba(255,215,0,0.6);
+    }
+
+    /* Floating Particles */
+    .particle {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: float-particle 15s infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes float-particle {
+      0%, 100% {
+        transform: translateY(0) translateX(0) scale(1);
+      }
+      33% {
+        transform: translateY(-100px) translateX(100px) scale(1.2);
+      }
+      66% {
+        transform: translateY(-50px) translateX(-100px) scale(0.8);
+      }
+    }
+
+    /* Scroll to Top Button */
+    .scroll-top {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, var(--primary-blue), #0055a5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0,61,122,0.4);
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 998;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .scroll-top:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 30px rgba(0,61,122,0.5);
+    }
+
+    /* Animated Counter */
+    .counter {
+      display: inline-block;
+    }
+
+    /* Dark Mode Toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 100px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      cursor: pointer;
+      z-index: 999;
+      transition: var(--transition);
+    }
+
+    .theme-toggle:hover {
+      transform: rotate(30deg);
+    }
+
+    /* Chat Widget */
+    .chat-widget {
+      position: fixed;
+      bottom: 30px;
+      right: 100px;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--primary-blue), #0055a5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(0,61,122,0.4);
+      transition: var(--transition);
+      z-index: 998;
+    }
+
+    .chat-widget:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(0,61,122,0.5);
+    }
+
+    /* Language Selector */
+    .language-selector {
+      position: relative;
+      display: inline-block;
+    }
+
+    .language-btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .language-btn:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .language-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      padding: 10px 0;
+      min-width: 150px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: var(--transition);
+      z-index: 1000;
+    }
+
+    .language-dropdown.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .language-option {
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .language-option:hover {
+      background: #f5f7fa;
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+      color: #e8ecf1;
+    }
+
+    body.dark-mode .card {
+      background: #2d3748;
+      color: #e8ecf1;
+    }
+
+    body.dark-mode .feature-card {
+      background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+      border-color: #4a5568;
+    }
+
+    body.dark-mode .footer {
+      background: linear-gradient(135deg, #0f0f1e 0%, #000000 100%);
+    }
+
+    /* Accessibility Improvements */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Focus styles for keyboard navigation */
+    button:focus, a:focus {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    /* Print Styles */
+    @media print {
+      .navbar, .footer, .security-badge, .quick-actions, .scroll-top, .chat-widget, .theme-toggle {
+        display: none !important;
+      }
+      
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      
+      .card {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
+  <!-- Enhanced Navbar -->
   <div class="navbar">
-    <div class="quote">"Your Money, Our Responsibility - NAMAN CORPORATION BANK "</div>
+    <div class="logo-section">
+      <div class="bank-logo">N</div>
+      <div class="quote">Your Money, Our Responsibility</div>
+    </div>
     <ul>
-      <li><a href="#">Services</a></li>
-      <li><a href="#">FAQ</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#faq" onclick="showModal()">FAQ</a></li>
       <li><a href="aboutme.html">About</a></li>
       <li><a href="contactus.html">Contact Us</a></li>
+      <li class="language-selector">
+        <button class="language-btn" onclick="toggleLanguageDropdown()">
+          <i class="fas fa-globe"></i> EN
+        </button>
+        <div class="language-dropdown" id="languageDropdown">
+          <div class="language-option" onclick="changeLanguage('en')">English</div>
+          <div class="language-option" onclick="changeLanguage('hi')">हिन्दी</div>
+          <div class="language-option" onclick="changeLanguage('es')">Español</div>
+          <div class="language-option" onclick="changeLanguage('fr')">Français</div>
+        </div>
+      </li>
     </ul>
+    <div class="hamburger" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
 
-  <!-- Moving Notice -->
-  <div class="notice">
-    <span>Customers can now deposit Income Tax / Corporate Taxes using all Bank Debit Cards and Credit Cards under Naman Bank Payment Gateway | Mandatory Profile password change after 365 days introduced for added security | Call us toll free on 1800 1234 for support</span>
+  <!-- Enhanced Moving Notice -->
+  <div class="notice-container">
+    <div class="notice">
+      <span>Customers can now deposit Income Tax / Corporate Taxes using all Bank Debit Cards and Credit Cards under Naman Bank Payment Gateway | Mandatory Profile password change after 365 days introduced for added security | Call us toll free on 1800-1234-5678 for 24/7 support | New mobile banking app with biometric authentication now available | Zero balance savings account with unlimited free transactions | Special loan rates for women entrepreneurs - Apply now!</span>
+    </div>
   </div>
 
-  <!-- Banner Image -->
-  <div class="banner"></div>
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <h1>Welcome to Naman Corporation Bank</h1>
+    <p>Experience banking that puts you first - Secure, Simple, Smart</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-number">5M+</span>
+        <span class="stat-label">Happy Customers</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">500+</span>
+        <span class="stat-label">Branches Nationwide</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">24/7</span>
+        <span class="stat-label">Customer Support</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">99.9%</span>
+        <span class="stat-label">Uptime Guarantee</span>
+      </div>
+    </div>
+  </div>
 
   <!-- Main Section -->
-  <div class="main-section">
+  <div class="main-section" id="services">
     <!-- Personal Banking -->
     <div class="card">
       <h2>Personal Banking</h2>
-      <button class="login-btn" onclick="window.location.href='personal_login.html'">LOGIN</button>
+      <div class="login-section">
+        <button class="login-btn" onclick="window.location.href='personal_login.html'">Secure Login</button>
+      </div>
       <div class="card-links">
-        <div>
-          <img src="images/user.png" width="40"><p>New User<br>Registration</p>
+        <div onclick="showToast('Registration', 'New user registration form will open'); setTimeout(() => window.location.href='personal_login.html', 1500)">
+          <div class="icon-wrapper">👤</div>
+          <p>New User<br>Registration</p>
         </div>
-        <div>
-          <img src="images/help.png" width="40"><p>Check Balance</p>
+        <div onclick="showToast('Balance Check', 'Login required to check balance'); setTimeout(() => window.location.href='checkbalance.php', 1500)">
+          <div class="icon-wrapper">💰</div>
+          <p>Check<br>Balance</p>
         </div>
-        <div>
-          <img src="images/customer.png" width="40"><p>Passbook</p>
+        <div onclick="showToast('Passbook', 'Opening digital passbook...'); setTimeout(() => window.location.href='passbook.php', 1500)">
+          <div class="icon-wrapper">📖</div>
+          <p>Digital<br>Passbook</p>
         </div>
-        <div>
-          <img src="images/lock.png" width="40"><p>Transactions</p>
+        <div onclick="showToast('Transactions', 'Loading transaction history...'); setTimeout(() => window.location.href='transfer.php', 1500)">
+          <div class="icon-wrapper">💳</div>
+          <p>Transaction<br>History</p>
+        </div>
+        <div onclick="showToast('Transfer', 'Redirecting to fund transfer...'); setTimeout(() => window.location.href='transfer.php', 1500)">
+          <div class="icon-wrapper">🔄</div>
+          <p>Fund<br>Transfer</p>
+        </div>
+        <div onclick="showToast('Bill Payment', 'Bill payment feature coming soon!', 'info')">
+          <div class="icon-wrapper">📱</div>
+          <p>Pay<br>Bills</p>
         </div>
       </div>
     </div>
@@ -193,44 +1364,626 @@
     <!-- Corporate Banking -->
     <div class="card">
       <h2>Corporate Banking</h2>
-      <button class="login-btn" onclick="window.location.href='corporate_login.html'">LOGIN</button>
+      <div class="login-section">
+        <button class="login-btn" onclick="window.location.href='corporate_login.html'">Corporate Login</button>
+      </div>
       <div class="card-links">
-        <div>
-          <img src="images/user.png" width="40"><p>View All Customers</p>
+        <div onclick="showToast('Customers', 'Loading customer list...'); setTimeout(() => window.location.href='customer.php', 1500)">
+          <div class="icon-wrapper">👥</div>
+          <p>View All<br>Customers</p>
         </div>
-        <div>
-          <img src="images/help.png" width="40"><p>Money Transfer</p>
+        <div onclick="showToast('Transfer', 'Opening bulk transfer panel...'); setTimeout(() => window.location.href='transferhistory.php', 1500)">
+          <div class="icon-wrapper">💸</div>
+          <p>Bulk Money<br>Transfer</p>
         </div>
-        <div>
-          <img src="images/customer.png" width="40"><p>Transaction History</p>
+        <div onclick="showToast('Reports', 'Generating transaction reports...'); setTimeout(() => window.location.href='transferhistory.php', 1500)">
+          <div class="icon-wrapper">📊</div>
+          <p>Transaction<br>Reports</p>
         </div>
+        <div onclick="showToast('Management', 'Opening account management...'); setTimeout(() => window.location.href='addcustomer.php', 1500)">
+          <div class="icon-wrapper">⚙️</div>
+          <p>Account<br>Management</p>
+        </div>
+        <div onclick="showToast('Analytics', 'Loading analytics dashboard...', 'info')">
+          <div class="icon-wrapper">📈</div>
+          <p>Analytics<br>Dashboard</p>
+        </div>
+        <div onclick="showToast('Payroll', 'Payroll services coming soon!', 'info')">
+          <div class="icon-wrapper">💼</div>
+          <p>Payroll<br>Services</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="features-section" id="features">
+    <h2 class="features-title">Why Choose Naman Corporation Bank?</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🔐</div>
+        <h3>Bank-Grade Security</h3>
+        <p>256-bit encryption, two-factor authentication, and fraud detection to keep your money safe</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Instant Transfers</h3>
+        <p>Transfer money instantly to any bank account with real-time processing</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📲</div>
+        <h3>Mobile Banking</h3>
+        <p>Bank on-the-go with our feature-rich mobile app available on iOS and Android</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💎</div>
+        <h3>Premium Benefits</h3>
+        <p>Exclusive rewards, cashback offers, and priority customer service for all members</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌍</div>
+        <h3>Global Access</h3>
+        <p>Access your account from anywhere in the world with our international banking services</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Smart Insights</h3>
+        <p>AI-powered financial insights and personalized recommendations for better money management</p>
       </div>
     </div>
   </div>
 
   <!-- Footer -->
   <div class="footer">
-    <div class="footer-links">
-      <ul>
-        <li><a href="#">Block ATM Card</a></li>
-        <li><a href="#">NRI Services</a></li>
-        <li><a href="#">Bank Insurance</a></li>
-      </ul>
-      <ul>
-        <li><a href="#">Cyber Crime Helpline</a></li>
-        <li><a href="#">Mutual Fund</a></li>
-        <li><a href="#">Salary Account</a></li>
-      </ul>
-      <ul>
-        <li><a href="#">Doorstep Banking</a></li>
-        <li><a href="#">Retail Direct</a></li>
-        <li><a href="#">General Insurance</a></li>
-      </ul>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Block ATM Card</a></li>
+          <li><a href="#">Apply for Loan</a></li>
+          <li><a href="#">Open Account</a></li>
+          <li><a href="#">Bank Locator</a></li>
+          <li><a href="#">Download Forms</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Services</h3>
+        <ul>
+          <li><a href="#">NRI Services</a></li>
+          <li><a href="#">Bank Insurance</a></li>
+          <li><a href="#">Mutual Fund</a></li>
+          <li><a href="#">Salary Account</a></li>
+          <li><a href="#">Fixed Deposits</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#">Cyber Crime Helpline</a></li>
+          <li><a href="#">Customer Care</a></li>
+          <li><a href="#">Doorstep Banking</a></li>
+          <li><a href="#">File a Complaint</a></li>
+          <li><a href="#">Track Complaint</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p>📞 Toll Free: 1800-1234-5678</p>
+        <p>📧 Email: support@namanbank.com</p>
+        <p>📍 Head Office: Mumbai, India</p>
+        <p>🕒 24/7 Customer Support</p>
+        <div class="social-links">
+          <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
+          <div class="social-icon"><i class="fab fa-twitter"></i></div>
+          <div class="social-icon"><i class="fab fa-instagram"></i></div>
+          <div class="social-icon"><i class="fab fa-linkedin-in"></i></div>
+        </div>
+      </div>
     </div>
     <div class="footer-bottom">
-      © Naman Corporation Bank 2025 | Designed by Naman Gupta
+      <p>© 2025 Naman Corporation Bank | All Rights Reserved</p>
+      <p>Designed & Developed by Naman Gupta | Privacy Policy | Terms & Conditions | Sitemap</p>
     </div>
   </div>
+
+  <!-- Security Badge -->
+  <div class="security-badge" onclick="showSecurityModal()">
+    Secured Connection
+  </div>
+
+  <!-- Quick Actions Button -->
+  <div class="quick-actions">
+    <div class="quick-action-btn" onclick="toggleQuickMenu()" title="Quick Actions">
+      <i class="fas fa-bolt"></i>
+    </div>
+    <div class="quick-menu" id="quickMenu">
+      <div class="quick-menu-item" onclick="showToast('ATM Locator', 'Opening ATM locator...')">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Find ATM</span>
+      </div>
+      <div class="quick-menu-item" onclick="showToast('Currency', 'Opening currency exchange...')">
+        <i class="fas fa-exchange-alt"></i>
+        <span>Currency Exchange</span>
+      </div>
+      <div class="quick-menu-item" onclick="showToast('Calculator', 'Opening EMI calculator...')">
+        <i class="fas fa-calculator"></i>
+        <span>EMI Calculator</span>
+      </div>
+      <div class="quick-menu-item" onclick="showToast('Support', 'Opening chat support...')">
+        <i class="fas fa-comments"></i>
+        <span>Chat Support</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat Widget -->
+  <div class="chat-widget" onclick="openChat()" title="Chat with us">
+    <i class="fas fa-comment-dots"></i>
+  </div>
+
+  <!-- Theme Toggle -->
+  <div class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <!-- Scroll to Top -->
+  <div class="scroll-top" onclick="scrollToTop()">
+    <i class="fas fa-chevron-up"></i>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <div class="toast-icon">✓</div>
+    <div class="toast-content">
+      <div class="toast-title" id="toastTitle">Success</div>
+      <div class="toast-message" id="toastMessage">Operation completed successfully</div>
+    </div>
+    <div class="toast-close" onclick="hideToast()">×</div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <div class="modal-close" onclick="closeModal()">×</div>
+      <h2 class="modal-title" id="modalTitle">Frequently Asked Questions</h2>
+      <div class="modal-text" id="modalText">
+        <p><strong>Q: How do I reset my password?</strong><br>
+        A: Click on "Forgot Password" on the login page and follow the instructions.</p>
+        
+        <p><strong>Q: What are the transaction limits?</strong><br>
+        A: Personal accounts: ₹1,00,000 per day. Corporate accounts: ₹10,00,000 per day.</p>
+        
+        <p><strong>Q: Is mobile banking secure?</strong><br>
+        A: Yes, we use 256-bit encryption and biometric authentication for maximum security.</p>
+        
+        <p><strong>Q: How do I block my ATM card?</strong><br>
+        A: Call our 24/7 helpline at 1800-1234-5678 or use the "Block ATM Card" option in the app.</p>
+      </div>
+      <div class="modal-buttons">
+        <button class="modal-btn modal-btn-secondary" onclick="closeModal()">Close</button>
+        <button class="modal-btn modal-btn-primary" onclick="contactSupport()">Contact Support</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <script>
+    // CSS Variables for dynamic theming
+    const root = document.documentElement;
+    
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      const scrollTop = document.querySelector('.scroll-top');
+      
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      
+      if (window.scrollY > 300) {
+        scrollTop.classList.add('visible');
+      } else {
+        scrollTop.classList.remove('visible');
+      }
+      
+      // Update progress bar
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (window.scrollY / windowHeight) * 100;
+      document.getElementById('progressBar').style.width = scrolled + '%';
+    });
+
+    // Scroll to top function
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Toast notification
+    function showToast(title, message, type = 'success') {
+      const toast = document.getElementById('toast');
+      const toastTitle = document.getElementById('toastTitle');
+      const toastMessage = document.getElementById('toastMessage');
+      const toastIcon = toast.querySelector('.toast-icon');
+      
+      toastTitle.textContent = title;
+      toastMessage.textContent = message;
+      
+      if (type === 'success') {
+        toastIcon.textContent = '✓';
+        toast.style.borderLeftColor = '#28a745';
+      } else if (type === 'info') {
+        toastIcon.textContent = 'ℹ';
+        toast.style.borderLeftColor = '#17a2b8';
+      } else if (type === 'warning') {
+        toastIcon.textContent = '⚠';
+        toast.style.borderLeftColor = '#ffc107';
+      }
+      
+      toast.classList.add('show');
+      
+      setTimeout(() => {
+        hideToast();
+      }, 4000);
+    }
+
+    function hideToast() {
+      document.getElementById('toast').classList.remove('show');
+    }
+
+    // Modal functions
+    function showModal() {
+      event.preventDefault();
+      document.getElementById('modal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    function showSecurityModal() {
+      const modal = document.getElementById('modal');
+      const title = document.getElementById('modalTitle');
+      const text = document.getElementById('modalText');
+      
+      title.textContent = 'Security Information';
+      text.innerHTML = `
+        <p><strong>Your connection is secured with:</strong></p>
+        <ul style="margin-left: 20px; line-height: 2;">
+          <li>256-bit SSL/TLS Encryption</li>
+          <li>Two-Factor Authentication (2FA)</li>
+          <li>Real-time Fraud Detection</li>
+          <li>Biometric Authentication Support</li>
+          <li>PCI DSS Compliance</li>
+        </ul>
+        <p style="margin-top: 15px;">We monitor all transactions 24/7 to ensure your money is safe and secure.</p>
+      `;
+      
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function contactSupport() {
+      closeModal();
+      showToast('Support', 'Opening support chat...', 'info');
+      setTimeout(() => {
+        window.location.href = 'contactus.html';
+      }, 1500);
+    }
+
+    // Quick menu toggle
+    function toggleQuickMenu() {
+      const quickMenu = document.getElementById('quickMenu');
+      quickMenu.classList.toggle('active');
+    }
+
+    // Close quick menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const quickActions = document.querySelector('.quick-actions');
+      const quickMenu = document.getElementById('quickMenu');
+      
+      if (!quickActions.contains(event.target) && quickMenu.classList.contains('active')) {
+        quickMenu.classList.remove('active');
+      }
+    });
+
+    // Language dropdown toggle
+    function toggleLanguageDropdown() {
+      const dropdown = document.getElementById('languageDropdown');
+      dropdown.classList.toggle('active');
+    }
+
+    // Close language dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const languageSelector = document.querySelector('.language-selector');
+      const dropdown = document.getElementById('languageDropdown');
+      
+      if (!languageSelector.contains(event.target) && dropdown.classList.contains('active')) {
+        dropdown.classList.remove('active');
+      }
+    });
+
+    function changeLanguage(lang) {
+      showToast('Language', `Language changed to ${lang.toUpperCase()}`, 'info');
+      document.getElementById('languageDropdown').classList.remove('active');
+      // In a real application, you would implement actual language switching here
+    }
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const navbar = document.querySelector('.navbar ul');
+      const hamburger = document.querySelector('.hamburger');
+      
+      navbar.classList.toggle('active');
+      hamburger.classList.toggle('active');
+    }
+
+    // Dark mode toggle
+    function toggleTheme() {
+      document.body.classList.toggle('dark-mode');
+      const themeIcon = document.querySelector('.theme-toggle i');
+      
+      if (document.body.classList.contains('dark-mode')) {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        localStorage.setItem('theme', 'light');
+      }
+    }
+
+    // Check for saved theme preference
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark-mode');
+      const themeIcon = document.querySelector('.theme-toggle i');
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    }
+
+    // Chat function
+    function openChat() {
+      showToast('Chat', 'Opening chat window...', 'info');
+      // In a real application, this would open a chat interface
+    }
+
+    // Animated counter for statistics
+    function animateCounter(element, target) {
+      let current = 0;
+      const increment = target / 100;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          element.textContent = target;
+          clearInterval(timer);
+        } else {
+          element.textContent = Math.floor(current);
+        }
+      }, 20);
+    }
+
+    // Trigger counter animation when in viewport
+    const observerOptions = {
+      threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const counters = entry.target.querySelectorAll('.stat-number');
+          counters.forEach(counter => {
+            const target = counter.textContent;
+            if (target.includes('+')) {
+              const num = parseInt(target.replace(/\D/g, ''));
+              let current = 0;
+              const increment = num / 50;
+              const timer = setInterval(() => {
+                current += increment;
+                if (current >= num) {
+                  counter.textContent = target;
+                  clearInterval(timer);
+                } else {
+                  counter.textContent = Math.floor(current) + 'M+';
+                }
+              }, 30);
+            } else if (target.includes('%')) {
+              const num = parseFloat(target.replace('%', ''));
+              let current = 0;
+              const increment = num / 50;
+              const timer = setInterval(() => {
+                current += increment;
+                if (current >= num) {
+                  counter.textContent = target;
+                  clearInterval(timer);
+                } else {
+                  counter.textContent = current.toFixed(1) + '%';
+                }
+              }, 30);
+            }
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    // Observe hero stats section
+    const heroStats = document.querySelector('.hero-stats');
+    if (heroStats) {
+      observer.observe(heroStats);
+    }
+
+    // Create floating particles
+    function createParticles() {
+      const colors = ['rgba(0,61,122,0.1)', 'rgba(255,215,0,0.1)'];
+      for (let i = 0; i < 5; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.width = Math.random() * 100 + 50 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.top = Math.random() * 100 + '%';
+        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.animationDelay = Math.random() * 5 + 's';
+        particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+        document.body.appendChild(particle);
+      }
+    }
+
+    // Initialize
+    window.addEventListener('load', () => {
+      createParticles();
+      showToast('Welcome', 'Welcome to Naman Corporation Bank - Your trusted banking partner!', 'success');
+      
+      // Add loading animation to cards
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+      });
+    });
+
+    // Close modal on outside click
+    document.getElementById('modal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    // Keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeModal();
+        hideToast();
+        document.getElementById('quickMenu').classList.remove('active');
+        document.getElementById('languageDropdown').classList.remove('active');
+      }
+      
+      // Accessibility: Focus trap for modal
+      if (e.key === 'Tab' && document.getElementById('modal').classList.contains('active')) {
+        const focusableElements = document.querySelectorAll('.modal button, .modal a, .modal input, .modal select, .modal textarea');
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+        
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            lastElement.focus();
+            e.preventDefault();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            firstElement.focus();
+            e.preventDefault();
+          }
+        }
+      }
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#faq') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+      });
+    });
+
+    // Performance optimization: Lazy load images
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.classList.remove('lazy');
+            imageObserver.unobserve(img);
+          }
+        });
+      });
+
+      document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+      });
+    }
+
+    // Service Worker Registration for PWA capabilities
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('SW registered: ', registration);
+          })
+          .catch(registrationError => {
+            console.log('SW registration failed: ', registrationError);
+          });
+      });
+    }
+
+    // Add ripple effect to buttons
+    document.addEventListener('click', function(e) {
+      if (e.target.matches('.login-btn, .modal-btn, .card-links div')) {
+        const button = e.target;
+        const ripple = document.createElement('span');
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple');
+        
+        button.appendChild(ripple);
+        
+        setTimeout(() => {
+          ripple.remove();
+        }, 600);
+      }
+    });
+
+    // Add CSS for ripple effect
+    const style = document.createElement('style');
+    style.textContent = `
+      .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.6);
+        transform: scale(0);
+        animation: ripple-animation 0.6s linear;
+        pointer-events: none;
+      }
+      
+      @keyframes ripple-animation {
+        to {
+          transform: scale(4);
+          opacity: 0;
+        }
+      }
+      
+      .login-btn, .modal-btn, .card-links div {
+        position: relative;
+        overflow: hidden;
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
 
 </body>
 </html>
