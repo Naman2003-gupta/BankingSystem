@@ -3,23 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Naman Corporation Bank - Secure, reliable banking solutions for personal and corporate needs">
-  <meta name="keywords" content="banking, finance, loans, savings, corporate banking">
-  <title>Naman Corporation Bank | Secure Banking Solutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="GlobalTrust Financial - Elite Banking Solutions for Individuals and Corporations">
+  <meta name="keywords" content="global banking, wealth management, corporate finance, investment banking, digital banking">
+  <title>GlobalTrust Financial | Elite Banking Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <style>
     :root {
-      --primary-blue: #003d7a;
-      --dark-blue: #001a33;
-      --gold: #ffd700;
-      --light-gold: #ffed4e;
-      --success: #28a745;
-      --warning: #ffc107;
-      --danger: #d32f2f;
-      --light-bg: #f5f7fa;
-      --card-shadow: 0 10px 30px rgba(0,0,0,0.12);
-      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      --primary-blue: #001233;
+      --navy-blue: #001845;
+      --royal-blue: #0353a4;
+      --accent-gold: #c9a227;
+      --light-gold: #e0c76a;
+      --platinum: #e6e8e6;
+      --success: #2ecc71;
+      --warning: #f39c12;
+      --danger: #e74c3c;
+      --gradient-primary: linear-gradient(135deg, var(--primary-blue) 0%, var(--navy-blue) 100%);
+      --gradient-gold: linear-gradient(135deg, var(--accent-gold) 0%, var(--light-gold) 100%);
+      --card-shadow: 0 15px 35px rgba(0, 24, 69, 0.1);
+      --transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --glass-bg: rgba(255, 255, 255, 0.08);
+      --glass-border: rgba(255, 255, 255, 0.2);
     }
 
     * {
@@ -30,243 +36,1010 @@
 
     body {
       font-family: 'Inter', Arial, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
-      color: #2c3e50;
-      line-height: 1.6;
+      background: linear-gradient(135deg, #f8f9fa 0%, #eef1f5 100%);
+      color: #333;
+      line-height: 1.7;
       overflow-x: hidden;
       position: relative;
     }
 
-    body::before {
-      content: '';
+    /* Animated Background */
+    .animated-bg {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 20% 50%, rgba(0,61,122,0.05) 0%, transparent 50%),
-                  radial-gradient(circle at 80% 80%, rgba(255,215,0,0.05) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: 0;
+      z-index: -2;
+      opacity: 0.6;
     }
 
-    body > * {
-      position: relative;
-      z-index: 1;
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--royal-blue) 0%, transparent 70%);
+      animation: float 25s infinite linear;
+    }
+
+    .bg-circle:nth-child(1) {
+      width: 300px;
+      height: 300px;
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+      opacity: 0.1;
+    }
+
+    .bg-circle:nth-child(2) {
+      width: 500px;
+      height: 500px;
+      top: 60%;
+      right: 10%;
+      animation-delay: 5s;
+      opacity: 0.05;
+    }
+
+    .bg-circle:nth-child(3) {
+      width: 200px;
+      height: 200px;
+      bottom: 20%;
+      left: 20%;
+      animation-delay: 10s;
+      opacity: 0.08;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      33% {
+        transform: translate(30px, -50px) rotate(120deg);
+      }
+      66% {
+        transform: translate(-20px, 20px) rotate(240deg);
+      }
     }
 
     /* Enhanced Navbar */
     .navbar {
-      background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+      background: var(--gradient-primary);
       color: white;
-      padding: 16px 50px;
+      padding: 20px 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      position: sticky;
+      box-shadow: 0 8px 32px rgba(0, 25, 68, 0.3);
+      position: fixed;
       top: 0;
+      width: 100%;
       z-index: 1000;
       transition: var(--transition);
       backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--glass-border);
     }
 
     .navbar.scrolled {
-      padding: 12px 50px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-      background: linear-gradient(135deg, rgba(0,26,51,0.95) 0%, rgba(0,61,122,0.95) 100%);
+      padding: 15px 60px;
+      background: rgba(0, 24, 69, 0.95);
+      box-shadow: 0 10px 40px rgba(0, 24, 69, 0.4);
     }
 
     .logo-section {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 20px;
     }
 
     .bank-logo {
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(135deg, var(--gold), var(--light-gold));
-      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-gold);
+      border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-family: 'Playfair Display', serif;
       font-weight: 900;
-      font-size: 24px;
+      font-size: 28px;
       color: var(--primary-blue);
-      box-shadow: 0 4px 8px rgba(255,215,0,0.4);
-      animation: pulse 2s infinite;
-      transition: var(--transition);
+      box-shadow: 0 8px 20px rgba(201, 162, 39, 0.4);
+      animation: logoGlow 3s infinite alternate;
+      position: relative;
+      overflow: hidden;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+    .bank-logo::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: rotate(45deg);
+      animation: logoShine 5s infinite linear;
     }
 
-    .navbar .quote {
-      font-size: 18px;
-      font-weight: 600;
-      background: linear-gradient(90deg, var(--gold), var(--light-gold));
+    @keyframes logoGlow {
+      0% {
+        box-shadow: 0 8px 20px rgba(201, 162, 39, 0.4);
+      }
+      100% {
+        box-shadow: 0 8px 30px rgba(201, 162, 39, 0.7);
+      }
+    }
+
+    @keyframes logoShine {
+      0% {
+        transform: rotate(45deg) translateX(-100%);
+      }
+      100% {
+        transform: rotate(45deg) translateX(100%);
+      }
+    }
+
+    .bank-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      background: linear-gradient(90deg, white, var(--light-gold));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      letter-spacing: 1px;
     }
 
     .navbar ul {
       list-style: none;
       display: flex;
-      gap: 30px;
+      gap: 35px;
       align-items: center;
+    }
+
+    .navbar ul li {
+      position: relative;
     }
 
     .navbar ul li a {
       color: white;
       text-decoration: none;
       font-weight: 500;
-      padding: 8px 16px;
-      border-radius: 6px;
+      padding: 10px 0;
       transition: var(--transition);
       position: relative;
-    }
-
-    .navbar ul li a:hover {
-      background: rgba(255,255,255,0.15);
-      transform: translateY(-2px);
+      letter-spacing: 0.5px;
     }
 
     .navbar ul li a::after {
       content: '';
       position: absolute;
       bottom: 0;
-      left: 50%;
+      left: 0;
       width: 0;
       height: 2px;
-      background: var(--gold);
+      background: var(--gradient-gold);
       transition: var(--transition);
-      transform: translateX(-50%);
     }
 
     .navbar ul li a:hover::after {
-      width: 80%;
+      width: 100%;
+    }
+
+    .navbar ul li a:hover {
+      color: var(--light-gold);
+    }
+
+    .nav-cta {
+      background: var(--gradient-gold);
+      color: var(--primary-blue);
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: var(--transition);
+      animation: pulseCta 2s infinite;
+    }
+
+    @keyframes pulseCta {
+      0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 5px 15px rgba(201, 162, 39, 0.4);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(201, 162, 39, 0.6);
+      }
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(201, 162, 39, 0.6);
     }
 
     .hamburger {
       display: none;
       flex-direction: column;
       cursor: pointer;
+      gap: 5px;
     }
 
     .hamburger span {
-      width: 25px;
+      width: 30px;
       height: 3px;
       background: white;
-      margin: 3px 0;
       transition: var(--transition);
     }
 
-    /* Enhanced Moving Notice */
+    /* Marquee with enhanced styling */
     .notice-container {
-      background: linear-gradient(90deg, #fff3cd 0%, #fffaeb 50%, #fff3cd 100%);
-      border-bottom: 3px solid var(--warning);
+      background: linear-gradient(90deg, #001233 0%, #001845 100%);
+      border-bottom: 1px solid rgba(201, 162, 39, 0.3);
       overflow: hidden;
       position: relative;
+      margin-top: 100px;
+      padding: 15px 0;
     }
 
     .notice {
-      color: var(--danger);
-      font-weight: 600;
-      padding: 12px 0;
-      white-space: nowrap;
+      color: white;
+      font-weight: 500;
       font-size: 15px;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      animation: marquee 30s linear infinite;
     }
 
-    .notice span {
-      display: inline-block;
-      padding-left: 100%;
-      animation: scroll 25s linear infinite;
+    .notice i {
+      color: var(--accent-gold);
+      margin-right: 15px;
+      font-size: 18px;
     }
 
-    @keyframes scroll {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-100%); }
-    }
-
-    .notice::before {
-      content: '⚠️ IMPORTANT: ';
-      font-weight: 700;
-      margin-right: 10px;
+    @keyframes marquee {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
     }
 
     /* Hero Section */
     .hero-section {
-      background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
-      padding: 60px 50px;
+      padding: 150px 60px 100px;
       text-align: center;
-      color: white;
       position: relative;
       overflow: hidden;
     }
 
-    .hero-section::before {
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-primary);
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      z-index: -1;
+    }
+
+    .hero-bg::after {
       content: '';
       position: absolute;
-      top: -50%;
-      right: -10%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(255,215,0,0.1) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: float 6s ease-in-out infinite;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(201,162,39,0.05)"/></svg>');
+      background-size: cover;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-30px); }
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      color: white;
     }
 
-    .hero-section h1 {
-      font-size: 48px;
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
       font-weight: 700;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-      animation: fadeInDown 1s ease;
+      margin-bottom: 25px;
+      line-height: 1.2;
+      animation: fadeInDown 1.2s ease;
+      text-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
 
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero-section p {
-      font-size: 20px;
-      margin-bottom: 30px;
-      opacity: 0.95;
-      animation: fadeIn 1.5s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .hero-subtitle {
+      font-size: 22px;
+      margin-bottom: 40px;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto 50px;
+      animation: fadeInUp 1.4s ease;
     }
 
     .hero-stats {
       display: flex;
       justify-content: center;
-      gap: 60px;
-      margin-top: 40px;
+      gap: 80px;
+      margin-top: 70px;
       flex-wrap: wrap;
+      animation: fadeIn 1.6s ease;
     }
 
     .stat-item {
       text-align: center;
-      animation: fadeInUp 1s ease;
+      position: relative;
+      padding: 25px;
+      border-radius: 20px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      transition: var(--transition);
+      min-width: 200px;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-10px);
+      background: rgba(201, 162, 39, 0.1);
+      border-color: var(--accent-gold);
+    }
+
+    .stat-number {
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--light-gold);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      font-size: 16px;
+      opacity: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Services Section */
+    .services-section {
+      padding: 100px 60px;
+      position: relative;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      text-align: center;
+      color: var(--primary-blue);
+      margin-bottom: 70px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--gradient-gold);
+      border-radius: 2px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      position: relative;
+      animation: cardFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes cardFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .service-card:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+
+    .service-card:nth-child(3) {
+      animation-delay: 1s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 25px 50px rgba(0, 24, 69, 0.2);
+    }
+
+    .service-icon {
+      height: 120px;
+      background: var(--gradient-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-icon::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: translateX(-100%);
+      animation: shine 2s infinite;
+    }
+
+    @keyframes shine {
+      100% {
+        transform: translateX(100%);
+      }
+    }
+
+    .service-content {
+      padding: 40px 30px;
+    }
+
+    .service-content h3 {
+      font-size: 24px;
+      color: var(--primary-blue);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .service-content p {
+      color: #666;
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+
+    .service-features {
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    .service-features li {
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+      color: #555;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .service-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent-gold);
+      font-weight: bold;
+    }
+
+    .service-cta {
+      display: inline-block;
+      margin-top: 20px;
+      color: var(--royal-blue);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .service-cta::after {
+      content: '→';
+      margin-left: 10px;
+      transition: var(--transition);
+    }
+
+    .service-cta:hover::after {
+      transform: translateX(5px);
+    }
+
+    /* Banking Dashboard */
+    .dashboard-section {
+      padding: 100px 60px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #eef1f5 100%);
+    }
+
+    .dashboard {
+      background: white;
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 24, 69, 0.1);
+      max-width: 1400px;
+      margin: 0 auto;
+      animation: dashboardEntrance 1s ease-out;
+    }
+
+    @keyframes dashboardEntrance {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .dashboard-header {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .dashboard-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 600;
+    }
+
+    .dashboard-subtitle {
+      opacity: 0.9;
+      margin-top: 10px;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 40px;
+    }
+
+    .dashboard-card {
+      background: linear-gradient(135deg, #f8f9fa 0%, white 100%);
+      border-radius: 15px;
+      padding: 30px;
+      transition: var(--transition);
+      border: 1px solid #eaeaea;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .dashboard-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 24, 69, 0.15);
+      border-color: var(--royal-blue);
+    }
+
+    .dashboard-card h3 {
+      color: var(--primary-blue);
+      margin-bottom: 20px;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dashboard-card h3 i {
+      color: var(--accent-gold);
+    }
+
+    .dashboard-btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 20px;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .dashboard-btn:hover {
+      background: var(--gradient-gold);
+      color: var(--primary-blue);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 24, 69, 0.2);
+    }
+
+    /* Features Carousel */
+    .features-section {
+      padding: 100px 60px;
+      position: relative;
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 1400px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 25px;
+      box-shadow: 0 20px 60px rgba(0, 24, 69, 0.15);
+    }
+
+    .carousel {
+      display: flex;
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      padding: 80px;
+      background: var(--gradient-primary);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel-slide:nth-child(2) {
+      background: linear-gradient(135deg, #001845 0%, #0353a4 100%);
+    }
+
+    .carousel-slide:nth-child(3) {
+      background: linear-gradient(135deg, #0353a4 0%, #001233 100%);
+    }
+
+    .carousel-content {
+      max-width: 800px;
+      z-index: 2;
+      position: relative;
+    }
+
+    .carousel-content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      margin-bottom: 25px;
+      animation: slideInLeft 1s ease;
+    }
+
+    .carousel-content p {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 30px;
+      animation: slideInRight 1s ease;
+    }
+
+    .carousel-nav {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      display: flex;
+      gap: 15px;
+      z-index: 3;
+    }
+
+    .carousel-btn {
+      width: 60px;
+      height: 60px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      cursor: pointer;
+      transition: var(--transition);
+      backdrop-filter: blur(5px);
+    }
+
+    .carousel-btn:hover {
+      background: var(--gradient-gold);
+      color: var(--primary-blue);
+      transform: scale(1.1);
+    }
+
+    /* Testimonials */
+    .testimonials-section {
+      padding: 100px 60px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #eef1f5 100%);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(0, 24, 69, 0.15);
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 100px;
+      color: var(--accent-gold);
+      opacity: 0.1;
+      font-family: serif;
+    }
+
+    .testimonial-content {
+      font-style: italic;
+      line-height: 1.8;
+      margin-bottom: 25px;
+      color: #555;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .author-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--gradient-gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-blue);
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .author-info h4 {
+      color: var(--primary-blue);
+      margin-bottom: 5px;
+    }
+
+    .author-info p {
+      color: #777;
+      font-size: 14px;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 80px 60px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,100 L100,0 L100,100 Z" fill="rgba(201,162,39,0.05)"/></svg>');
+      background-size: cover;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 50px;
+      max-width: 1400px;
+      margin: 0 auto 60px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-section h3 {
+      color: var(--light-gold);
+      margin-bottom: 25px;
+      font-size: 20px;
+      font-weight: 600;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    .footer-section h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--gradient-gold);
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin: 15px 0;
+    }
+
+    .footer-section ul li a {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      transition: var(--transition);
+      display: inline-block;
+    }
+
+    .footer-section ul li a:hover {
+      color: var(--light-gold);
+      transform: translateX(10px);
+    }
+
+    .footer-contact p {
+      margin: 15px 0;
+      color: rgba(255, 255, 255, 0.8);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .social-icon {
+      width: 45px;
+      height: 45px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      cursor: pointer;
+      backdrop-filter: blur(5px);
+    }
+
+    .social-icon:hover {
+      background: var(--gradient-gold);
+      color: var(--primary-blue);
+      transform: translateY(-5px) rotate(10deg);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Floating Elements */
+    .floating-elements {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .floating-element {
+      position: absolute;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      backdrop-filter: blur(5px);
+      border-radius: 20px;
+      padding: 20px;
+      animation: floatElement 20s infinite linear;
+      box-shadow: 0 10px 30px rgba(0, 24, 69, 0.1);
+    }
+
+    @keyframes floatElement {
+      0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      25% {
+        transform: translate(30px, -50px) rotate(5deg);
+      }
+      50% {
+        transform: translate(-20px, -30px) rotate(-5deg);
+      }
+      75% {
+        transform: translate(40px, 20px) rotate(3deg);
+      }
+    }
+
+    /* Notification Badge */
+    .notification-badge {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: var(--gradient-gold);
+      color: var(--primary-blue);
+      padding: 15px 25px;
+      border-radius: 50px;
+      box-shadow: 0 10px 30px rgba(201, 162, 39, 0.4);
+      font-weight: 600;
+      z-index: 999;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: badgePulse 3s infinite;
+    }
+
+    @keyframes badgePulse {
+      0%, 100% {
+        box-shadow: 0 10px 30px rgba(201, 162, 39, 0.4);
+      }
+      50% {
+        box-shadow: 0 15px 40px rgba(201, 162, 39, 0.6);
+      }
+    }
+
+    .notification-badge:hover {
+      transform: scale(1.05) rotate(-5deg);
+    }
+
+    /* Loading Animation */
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    .loader {
+      width: 80px;
+      height: 80px;
+      border: 5px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      border-top-color: var(--light-gold);
+      animation: spin 1s infinite linear;
+      margin-bottom: 30px;
+    }
+
+    @keyframes spin {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* Enhanced Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     @keyframes fadeInUp {
@@ -280,972 +1053,125 @@
       }
     }
 
-    .stat-number {
-      font-size: 42px;
-      font-weight: 700;
-      color: var(--gold);
-      display: block;
-    }
-
-    .stat-label {
-      font-size: 16px;
-      opacity: 0.9;
-      margin-top: 8px;
-    }
-
-    /* Main Section */
-    .main-section {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-      gap: 40px;
-      margin: 50px auto;
-      max-width: 1400px;
-      padding: 0 50px;
-    }
-
-    .card {
-      background: white;
-      padding: 40px;
-      border-radius: 16px;
-      box-shadow: var(--card-shadow);
-      transition: var(--transition);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 4px;
-      background: linear-gradient(90deg, var(--primary-blue), var(--gold));
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-    }
-
-    .card h2 {
-      color: var(--primary-blue);
-      font-size: 32px;
-      margin-bottom: 25px;
-      text-align: center;
-      font-weight: 700;
-      position: relative;
-      padding-bottom: 15px;
-    }
-
-    .card h2::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary-blue), var(--gold));
-      border-radius: 2px;
-    }
-
-    .login-section {
-      text-align: center;
-      margin: 30px 0;
-    }
-
-    .login-btn {
-      background: linear-gradient(135deg, var(--primary-blue) 0%, #0055a5 100%);
-      color: white;
-      padding: 14px 50px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 16px;
-      box-shadow: 0 6px 20px rgba(0,61,122,0.3);
-      transition: var(--transition);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .login-btn::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.3);
-      transform: translate(-50%, -50%);
-      transition: all 0.6s ease;
-    }
-
-    .login-btn:hover::before {
-      width: 300px;
-      height: 300px;
-    }
-
-    .login-btn:hover {
-      background: linear-gradient(135deg, #0055a5 0%, #007bff 100%);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 35px rgba(0,61,122,0.5);
-    }
-
-    .login-btn:active {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(0,61,122,0.4);
-    }
-
-    .card-links {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 25px;
-      margin-top: 35px;
-    }
-
-    .card-links div {
-      text-align: center;
-      padding: 20px 15px;
-      border-radius: 12px;
-      transition: var(--transition);
-      cursor: pointer;
-      background: #f8f9fa;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card-links div::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(0,61,122,0.1);
-      transform: translate(-50%, -50%);
-      transition: all 0.5s ease;
-    }
-
-    .card-links div:hover::before {
-      width: 200%;
-      height: 200%;
-    }
-
-    .card-links div:hover {
-      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-      transform: scale(1.08);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
-
-    .card-links div:active {
-      transform: scale(0.98);
-    }
-
-    .icon-wrapper {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, var(--primary-blue), #0055a5);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 12px;
-      font-size: 28px;
-      transition: var(--transition);
-      box-shadow: 0 4px 12px rgba(0,61,122,0.3);
-    }
-
-    .card-links div:hover .icon-wrapper {
-      transform: rotateY(360deg);
-      box-shadow: 0 6px 20px rgba(0,61,122,0.4);
-    }
-
-    .card-links p {
-      font-size: 14px;
-      font-weight: 500;
-      color: #2c3e50;
-      margin-top: 10px;
-    }
-
-    /* Features Section */
-    .features-section {
-      background: white;
-      padding: 60px 50px;
-      margin: 50px 0;
-    }
-
-    .features-title {
-      text-align: center;
-      font-size: 36px;
-      color: var(--primary-blue);
-      margin-bottom: 50px;
-      font-weight: 700;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 35px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-
-    .feature-card {
-      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-      padding: 30px;
-      border-radius: 12px;
-      text-align: center;
-      transition: var(--transition);
-      border: 2px solid #e8ecf1;
-    }
-
-    .feature-card:hover {
-      border-color: var(--primary-blue);
-      transform: translateY(-5px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
-    }
-
-    .feature-icon {
-      font-size: 48px;
-      margin-bottom: 20px;
-    }
-
-    .feature-card h3 {
-      color: var(--primary-blue);
-      margin-bottom: 15px;
-      font-size: 20px;
-      font-weight: 600;
-    }
-
-    .feature-card p {
-      color: #5a6c7d;
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    /* Footer */
-    .footer {
-      background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
-      color: white;
-      padding: 50px 50px 30px;
-      margin-top: 60px;
-    }
-
-    .footer-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      max-width: 1400px;
-      margin: 0 auto 40px;
-    }
-
-    .footer-section h3 {
-      color: var(--gold);
-      margin-bottom: 20px;
-      font-size: 20px;
-      font-weight: 600;
-    }
-
-    .footer-section ul {
-      list-style: none;
-    }
-
-    .footer-section ul li {
-      margin: 12px 0;
-    }
-
-    .footer-section ul li a {
-      color: #b8c5d6;
-      text-decoration: none;
-      transition: var(--transition);
-      display: inline-block;
-    }
-
-    .footer-section ul li a:hover {
-      color: var(--gold);
-      transform: translateX(5px);
-    }
-
-    .footer-section p {
-      color: #b8c5d6;
-      line-height: 1.8;
-      font-size: 14px;
-    }
-
-    .social-links {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .social-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: var(--transition);
-      cursor: pointer;
-    }
-
-    .social-icon:hover {
-      background: var(--gold);
-      transform: translateY(-5px);
-    }
-
-    .footer-bottom {
-      text-align: center;
-      padding-top: 30px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      color: #8b95a5;
-      font-size: 14px;
-    }
-
-    .footer-bottom p {
-      margin: 8px 0;
-    }
-
-    /* Security Badge */
-    .security-badge {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: linear-gradient(135deg, var(--success), #20c997);
-      color: white;
-      padding: 12px 20px;
-      border-radius: 30px;
-      box-shadow: 0 6px 20px rgba(40,167,69,0.4);
-      font-weight: 600;
-      font-size: 14px;
-      z-index: 999;
-      animation: slideInRight 1s ease;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    @keyframes slideInRight {
+    @keyframes fadeInDown {
       from {
-        transform: translateX(100px);
         opacity: 0;
+        transform: translateY(-30px);
       }
       to {
-        transform: translateX(0);
         opacity: 1;
+        transform: translateY(0);
       }
-    }
-
-    .security-badge:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 30px rgba(40,167,69,0.5);
-    }
-
-    .security-badge::before {
-      content: '🔒 ';
-      margin-right: 8px;
-    }
-
-    /* Quick Actions Floating Button */
-    .quick-actions {
-      position: fixed;
-      bottom: 30px;
-      left: 30px;
-      z-index: 999;
-    }
-
-    .quick-action-btn {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, var(--primary-blue), #0055a5);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 28px;
-      cursor: pointer;
-      box-shadow: 0 6px 20px rgba(0,61,122,0.4);
-      transition: var(--transition);
-      animation: slideInLeft 1s ease;
     }
 
     @keyframes slideInLeft {
       from {
-        transform: translateX(-100px);
         opacity: 0;
+        transform: translateX(-50px);
       }
       to {
-        transform: translateX(0);
         opacity: 1;
+        transform: translateX(0);
       }
     }
 
-    .quick-action-btn:hover {
-      transform: rotate(90deg) scale(1.1);
-      box-shadow: 0 8px 30px rgba(0,61,122,0.5);
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
-    /* Quick Actions Menu */
-    .quick-menu {
-      position: absolute;
-      bottom: 70px;
-      left: 0;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      padding: 15px;
-      min-width: 200px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(20px);
-      transition: var(--transition);
-      z-index: 1000;
-    }
-
-    .quick-menu.active {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .quick-menu-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .quick-menu-item:hover {
-      background: #f5f7fa;
-    }
-
-    .quick-menu-item i {
-      font-size: 18px;
-      color: var(--primary-blue);
-      width: 20px;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 1024px) {
-      .main-section {
-        grid-template-columns: 1fr;
-        gap: 30px;
+    /* Media Queries */
+    @media (max-width: 1200px) {
+      .navbar, .hero-section, .services-section, .dashboard-section, 
+      .features-section, .testimonials-section, .footer {
+        padding-left: 40px;
+        padding-right: 40px;
       }
       
-      .hero-stats {
-        gap: 40px;
+      .hero-title {
+        font-size: 48px;
       }
     }
 
     @media (max-width: 768px) {
       .navbar {
-        padding: 12px 20px;
+        padding: 15px 20px;
+        flex-wrap: wrap;
+      }
+      
+      .navbar ul {
+        display: none;
+        width: 100%;
         flex-direction: column;
         gap: 15px;
+        margin-top: 20px;
       }
-
-      .navbar ul {
-        flex-direction: column;
-        gap: 10px;
-        width: 100%;
-        text-align: center;
-        display: none;
-      }
-
+      
       .navbar ul.active {
         display: flex;
       }
-
+      
       .hamburger {
         display: flex;
-        position: absolute;
-        right: 20px;
-        top: 20px;
       }
-
-      .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-
-      .hamburger.active span:nth-child(2) {
-        opacity: 0;
-      }
-
-      .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(7px, -6px);
-      }
-
+      
       .hero-section {
-        padding: 40px 20px;
+        padding: 120px 20px 60px;
       }
-
-      .hero-section h1 {
-        font-size: 32px;
+      
+      .hero-title {
+        font-size: 36px;
       }
-
+      
       .hero-stats {
         gap: 30px;
       }
-
-      .main-section {
-        grid-template-columns: 1fr;
-        padding: 0 20px;
-        gap: 25px;
+      
+      .stat-item {
+        min-width: 150px;
       }
-
-      .card {
-        padding: 25px;
+      
+      .section-title {
+        font-size: 36px;
       }
-
-      .card-links {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
+      
+      .carousel-slide {
+        padding: 40px;
       }
-
-      .features-section {
-        padding: 40px 20px;
-      }
-
-      .footer {
-        padding: 40px 20px 20px;
-      }
-
-      .footer-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .security-badge {
-        bottom: 15px;
-        right: 15px;
-        font-size: 12px;
-        padding: 10px 15px;
-      }
-
-      .quick-actions {
-        bottom: 80px;
-        left: 15px;
+      
+      .carousel-content h2 {
+        font-size: 32px;
       }
     }
 
     @media (max-width: 480px) {
-      .card-links {
+      .services-grid {
         grid-template-columns: 1fr;
       }
       
-      .hero-stats {
-        gap: 20px;
+      .dashboard-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero-title {
+        font-size: 32px;
       }
       
       .stat-number {
-        font-size: 32px;
+        font-size: 36px;
       }
-    }
-
-    /* Loading Animation */
-    @keyframes shimmer {
-      0% { background-position: -1000px 0; }
-      100% { background-position: 1000px 0; }
-    }
-
-    .loading-shimmer {
-      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-      background-size: 1000px 100%;
-      animation: shimmer 2s infinite;
-    }
-
-    /* Notification Toast */
-    .toast {
-      position: fixed;
-      top: 100px;
-      right: 30px;
-      background: white;
-      padding: 20px 25px;
-      border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      transform: translateX(400px);
-      opacity: 0;
-      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-      z-index: 10000;
-      min-width: 300px;
-      border-left: 4px solid var(--success);
-    }
-
-    .toast.show {
-      transform: translateX(0);
-      opacity: 1;
-    }
-
-    .toast-icon {
-      font-size: 24px;
-      flex-shrink: 0;
-    }
-
-    .toast-content {
-      flex-grow: 1;
-    }
-
-    .toast-title {
-      font-weight: 600;
-      color: var(--primary-blue);
-      margin-bottom: 4px;
-    }
-
-    .toast-message {
-      font-size: 14px;
-      color: #5a6c7d;
-    }
-
-    .toast-close {
-      font-size: 20px;
-      cursor: pointer;
-      color: #999;
-      transition: color 0.3s ease;
-    }
-
-    .toast-close:hover {
-      color: #333;
-    }
-
-    /* Modal */
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
-    }
-
-    .modal.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal-content {
-      background: white;
-      padding: 40px;
-      border-radius: 16px;
-      max-width: 500px;
-      width: 90%;
-      transform: scale(0.7);
-      transition: transform 0.3s ease;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-      position: relative;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-
-    .modal.active .modal-content {
-      transform: scale(1);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      font-size: 28px;
-      cursor: pointer;
-      color: #999;
-      transition: color 0.3s ease;
-      line-height: 1;
-    }
-
-    .modal-close:hover {
-      color: var(--danger);
-      transform: rotate(90deg);
-    }
-
-    .modal-title {
-      font-size: 28px;
-      color: var(--primary-blue);
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-
-    .modal-text {
-      color: #5a6c7d;
-      line-height: 1.8;
-      margin-bottom: 25px;
-    }
-
-    .modal-buttons {
-      display: flex;
-      gap: 15px;
-      justify-content: flex-end;
-    }
-
-    .modal-btn {
-      padding: 12px 30px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: var(--transition);
-      font-size: 14px;
-    }
-
-    .modal-btn-primary {
-      background: linear-gradient(135deg, var(--primary-blue), #0055a5);
-      color: white;
-    }
-
-    .modal-btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,61,122,0.4);
-    }
-
-    .modal-btn-secondary {
-      background: #e8ecf1;
-      color: #5a6c7d;
-    }
-
-    .modal-btn-secondary:hover {
-      background: #d4dae0;
-    }
-
-    /* Progress Bar */
-    .progress-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: rgba(255,255,255,0.3);
-      z-index: 10001;
-    }
-
-    .progress-bar {
-      height: 100%;
-      background: linear-gradient(90deg, var(--gold), var(--light-gold));
-      width: 0%;
-      transition: width 0.3s ease;
-      box-shadow: 0 0 10px rgba(255,215,0,0.6);
-    }
-
-    /* Floating Particles */
-    .particle {
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      animation: float-particle 15s infinite;
-      opacity: 0.6;
-    }
-
-    @keyframes float-particle {
-      0%, 100% {
-        transform: translateY(0) translateX(0) scale(1);
-      }
-      33% {
-        transform: translateY(-100px) translateX(100px) scale(1.2);
-      }
-      66% {
-        transform: translateY(-50px) translateX(-100px) scale(0.8);
-      }
-    }
-
-    /* Scroll to Top Button */
-    .scroll-top {
-      position: fixed;
-      bottom: 100px;
-      right: 30px;
-      width: 50px;
-      height: 50px;
-      background: linear-gradient(135deg, var(--primary-blue), #0055a5);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
-      box-shadow: 0 6px 20px rgba(0,61,122,0.4);
-      opacity: 0;
-      visibility: hidden;
-      transition: var(--transition);
-      z-index: 998;
-    }
-
-    .scroll-top.visible {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .scroll-top:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 30px rgba(0,61,122,0.5);
-    }
-
-    /* Animated Counter */
-    .counter {
-      display: inline-block;
-    }
-
-    /* Dark Mode Toggle */
-    .theme-toggle {
-      position: fixed;
-      top: 100px;
-      right: 30px;
-      width: 50px;
-      height: 50px;
-      background: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      cursor: pointer;
-      z-index: 999;
-      transition: var(--transition);
-    }
-
-    .theme-toggle:hover {
-      transform: rotate(30deg);
-    }
-
-    /* Chat Widget */
-    .chat-widget {
-      position: fixed;
-      bottom: 30px;
-      right: 100px;
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, var(--primary-blue), #0055a5);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
-      box-shadow: 0 6px 20px rgba(0,61,122,0.4);
-      transition: var(--transition);
-      z-index: 998;
-    }
-
-    .chat-widget:hover {
-      transform: scale(1.1);
-      box-shadow: 0 8px 30px rgba(0,61,122,0.5);
-    }
-
-    /* Language Selector */
-    .language-selector {
-      position: relative;
-      display: inline-block;
-    }
-
-    .language-btn {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.3);
-      color: white;
-      padding: 8px 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: var(--transition);
-    }
-
-    .language-btn:hover {
-      background: rgba(255,255,255,0.1);
-    }
-
-    .language-dropdown {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      padding: 10px 0;
-      min-width: 150px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(10px);
-      transition: var(--transition);
-      z-index: 1000;
-    }
-
-    .language-dropdown.active {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .language-option {
-      padding: 10px 20px;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .language-option:hover {
-      background: #f5f7fa;
-    }
-
-    /* Dark Mode Styles */
-    body.dark-mode {
-      background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
-      color: #e8ecf1;
-    }
-
-    body.dark-mode .card {
-      background: #2d3748;
-      color: #e8ecf1;
-    }
-
-    body.dark-mode .feature-card {
-      background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
-      border-color: #4a5568;
-    }
-
-    body.dark-mode .footer {
-      background: linear-gradient(135deg, #0f0f1e 0%, #000000 100%);
-    }
-
-    /* Accessibility Improvements */
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    /* Focus styles for keyboard navigation */
-    button:focus, a:focus {
-      outline: 2px solid var(--gold);
-      outline-offset: 2px;
     }
 
     /* Print Styles */
     @media print {
-      .navbar, .footer, .security-badge, .quick-actions, .scroll-top, .chat-widget, .theme-toggle {
+      .navbar, .footer, .notification-badge, .floating-elements,
+      .carousel-nav, .dashboard-btn {
         display: none !important;
       }
       
@@ -1254,736 +1180,725 @@
         color: black !important;
       }
       
-      .card {
-        box-shadow: none !important;
-        border: 1px solid #ddd !important;
+      .hero-section {
+        padding: 50px 20px !important;
+      }
+      
+      .hero-bg {
+        display: none !important;
+      }
+      
+      .hero-title {
+        color: black !important;
       }
     }
   </style>
 </head>
 <body>
-
-  <!-- Enhanced Navbar -->
-  <div class="navbar">
-    <div class="logo-section">
-      <div class="bank-logo">N</div>
-      <div class="quote">Your Money, Our Responsibility</div>
-    </div>
-    <ul>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#faq" onclick="showModal()">FAQ</a></li>
-      <li><a href="aboutme.html">About</a></li>
-      <li><a href="contactus.html">Contact Us</a></li>
-      <li class="language-selector">
-        <button class="language-btn" onclick="toggleLanguageDropdown()">
-          <i class="fas fa-globe"></i> EN
-        </button>
-        <div class="language-dropdown" id="languageDropdown">
-          <div class="language-option" onclick="changeLanguage('en')">English</div>
-          <div class="language-option" onclick="changeLanguage('hi')">हिन्दी</div>
-          <div class="language-option" onclick="changeLanguage('es')">Español</div>
-          <div class="language-option" onclick="changeLanguage('fr')">Français</div>
-        </div>
-      </li>
-    </ul>
-    <div class="hamburger" onclick="toggleMobileMenu()">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+  <!-- Loading Screen -->
+  <div class="loading-screen" id="loadingScreen">
+    <div class="loader"></div>
+    <div style="color: white; font-size: 18px; margin-top: 20px;">Initializing Secure Banking Platform...</div>
   </div>
 
-  <!-- Enhanced Moving Notice -->
+  <!-- Animated Background -->
+  <div class="animated-bg">
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+  </div>
+
+  <!-- Floating Elements -->
+  <div class="floating-elements">
+    <div class="floating-element" style="top: 20%; left: 5%; width: 100px; height: 100px; animation-delay: 0s;"></div>
+    <div class="floating-element" style="top: 60%; right: 10%; width: 150px; height: 150px; animation-delay: 5s;"></div>
+    <div class="floating-element" style="bottom: 30%; left: 15%; width: 80px; height: 80px; animation-delay: 10s;"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="logo-section">
+      <div class="bank-logo">GT</div>
+      <div class="bank-name">GlobalTrust Financial</div>
+    </div>
+    <ul id="navMenu">
+      <li><a href="#services">Private Banking</a></li>
+      <li><a href="#dashboard">Digital Banking</a></li>
+      <li><a href="#features">Wealth Management</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" class="nav-cta">Open Account</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <!-- Marquee Notice -->
   <div class="notice-container">
     <div class="notice">
-      <span>Customers can now deposit Income Tax / Corporate Taxes using all Bank Debit Cards and Credit Cards under Naman Bank Payment Gateway | Mandatory Profile password change after 365 days introduced for added security | Call us toll free on 1800-1234-5678 for 24/7 support | New mobile banking app with biometric authentication now available | Zero balance savings account with unlimited free transactions | Special loan rates for women entrepreneurs - Apply now!</span>
+      <i class="fas fa-exclamation-circle"></i>
+      GlobalTrust Financial announces record quarterly results with 23% growth in assets under management • New AI-powered investment advisor now available for all premium clients • Enhanced security features with biometric authentication rolled out globally • Interest rates on fixed deposits increased by 0.5% across all tenures
     </div>
   </div>
 
   <!-- Hero Section -->
-  <div class="hero-section">
-    <h1>Welcome to Naman Corporation Bank</h1>
-    <p>Experience banking that puts you first - Secure, Simple, Smart</p>
-    <div class="hero-stats">
-      <div class="stat-item">
-        <span class="stat-number">5M+</span>
-        <span class="stat-label">Happy Customers</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">500+</span>
-        <span class="stat-label">Branches Nationwide</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">24/7</span>
-        <span class="stat-label">Customer Support</span>
-      </div>
-      <div class="stat-item">
-        <span class="stat-number">99.9%</span>
-        <span class="stat-label">Uptime Guarantee</span>
+  <section class="hero-section">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Redefining Global<br>Banking Excellence</h1>
+      <p class="hero-subtitle">Where innovation meets tradition in financial services. Experience bespoke banking solutions tailored for discerning clients worldwide.</p>
+      
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number" data-count="150">0</span>
+          <span class="stat-label">Countries Served</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="2.5">0</span>
+          <span class="stat-label">Trillion USD Assets</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="185">0</span>
+          <span class="stat-label">Years of Excellence</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="99.7">0</span>
+          <span class="stat-label">Client Satisfaction</span>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Main Section -->
-  <div class="main-section" id="services">
-    <!-- Personal Banking -->
-    <div class="card">
-      <h2>Personal Banking</h2>
-      <div class="login-section">
-        <button class="login-btn" onclick="window.location.href='personal_login.html'">Secure Login</button>
+  <!-- Services Section -->
+  <section class="services-section" id="services">
+    <h2 class="section-title">Our Premier Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-crown"></i>
+        </div>
+        <div class="service-content">
+          <h3>Private Banking</h3>
+          <p>Exclusive wealth management services for high-net-worth individuals with personalized portfolio strategies.</p>
+          <ul class="service-features">
+            <li>Personal Relationship Manager</li>
+            <li>Global Investment Opportunities</li>
+            <li>Family Office Services</li>
+            <li>Tax Optimization Strategies</li>
+          </ul>
+          <a href="#" class="service-cta">Explore Private Banking</a>
+        </div>
       </div>
-      <div class="card-links">
-        <div onclick="showToast('Registration', 'New user registration form will open'); setTimeout(() => window.location.href='personal_login.html', 1500)">
-          <div class="icon-wrapper">👤</div>
-          <p>New User<br>Registration</p>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-building"></i>
         </div>
-        <div onclick="showToast('Balance Check', 'Login required to check balance'); setTimeout(() => window.location.href='checkbalance.php', 1500)">
-          <div class="icon-wrapper">💰</div>
-          <p>Check<br>Balance</p>
+        <div class="service-content">
+          <h3>Corporate Finance</h3>
+          <p>Comprehensive financial solutions for corporations, from M&A advisory to capital market transactions.</p>
+          <ul class="service-features">
+            <li>Mergers & Acquisitions</li>
+            <li>IPO Advisory</li>
+            <li>Debt & Equity Financing</li>
+            <li>Risk Management</li>
+          </ul>
+          <a href="#" class="service-cta">Explore Corporate Banking</a>
         </div>
-        <div onclick="showToast('Passbook', 'Opening digital passbook...'); setTimeout(() => window.location.href='passbook.php', 1500)">
-          <div class="icon-wrapper">📖</div>
-          <p>Digital<br>Passbook</p>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-chart-line"></i>
         </div>
-        <div onclick="showToast('Transactions', 'Loading transaction history...'); setTimeout(() => window.location.href='transfer.php', 1500)">
-          <div class="icon-wrapper">💳</div>
-          <p>Transaction<br>History</p>
-        </div>
-        <div onclick="showToast('Transfer', 'Redirecting to fund transfer...'); setTimeout(() => window.location.href='transfer.php', 1500)">
-          <div class="icon-wrapper">🔄</div>
-          <p>Fund<br>Transfer</p>
-        </div>
-        <div onclick="showToast('Bill Payment', 'Bill payment feature coming soon!', 'info')">
-          <div class="icon-wrapper">📱</div>
-          <p>Pay<br>Bills</p>
+        <div class="service-content">
+          <h3>Investment Management</h3>
+          <p>Sophisticated investment strategies powered by AI and expert financial analysis for optimal returns.</p>
+          <ul class="service-features">
+            <li>Algorithmic Trading</li>
+            <li>ESG Investment Portfolios</li>
+            <li>Retirement Planning</li>
+            <li>Real Estate Investment Trusts</li>
+          </ul>
+          <a href="#" class="service-cta">Explore Investments</a>
         </div>
       </div>
     </div>
+  </section>
 
-    <!-- Corporate Banking -->
-    <div class="card">
-      <h2>Corporate Banking</h2>
-      <div class="login-section">
-        <button class="login-btn" onclick="window.location.href='corporate_login.html'">Corporate Login</button>
+  <!-- Dashboard Section -->
+  <section class="dashboard-section" id="dashboard">
+    <h2 class="section-title">Digital Banking Dashboard</h2>
+    <div class="dashboard">
+      <div class="dashboard-header">
+        <div>
+          <h2 class="dashboard-title">Welcome to Your Financial Hub</h2>
+          <p class="dashboard-subtitle">Manage all your accounts, investments, and transactions in one secure platform</p>
+        </div>
+        <div style="color: var(--light-gold); font-size: 14px; background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 20px;">
+          <i class="fas fa-shield-alt"></i> Secure Connection • Last login: Today, 09:42 AM
+        </div>
       </div>
-      <div class="card-links">
-        <div onclick="showToast('Customers', 'Loading customer list...'); setTimeout(() => window.location.href='customer.php', 1500)">
-          <div class="icon-wrapper">👥</div>
-          <p>View All<br>Customers</p>
+      
+      <div class="dashboard-grid">
+        <div class="dashboard-card">
+          <h3><i class="fas fa-wallet"></i> Account Overview</h3>
+          <p>Total Balance: <strong style="color: var(--accent-gold); font-size: 24px;">$1,248,750.00</strong></p>
+          <p>Available Credit: $500,000.00</p>
+          <p>Investment Portfolio: $2,500,000.00</p>
+          <a href="#" class="dashboard-btn">View Details</a>
         </div>
-        <div onclick="showToast('Transfer', 'Opening bulk transfer panel...'); setTimeout(() => window.location.href='transferhistory.php', 1500)">
-          <div class="icon-wrapper">💸</div>
-          <p>Bulk Money<br>Transfer</p>
+        
+        <div class="dashboard-card">
+          <h3><i class="fas fa-exchange-alt"></i> Quick Transfers</h3>
+          <p>Make instant transfers between accounts or to external beneficiaries</p>
+          <div style="margin-top: 20px;">
+            <input type="text" placeholder="Enter Amount" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px;">
+            <a href="#" class="dashboard-btn">Initiate Transfer</a>
+          </div>
         </div>
-        <div onclick="showToast('Reports', 'Generating transaction reports...'); setTimeout(() => window.location.href='transferhistory.php', 1500)">
-          <div class="icon-wrapper">📊</div>
-          <p>Transaction<br>Reports</p>
+        
+        <div class="dashboard-card">
+          <h3><i class="fas fa-chart-pie"></i> Portfolio Performance</h3>
+          <p>Your investments have grown by <strong style="color: var(--success);">+8.7%</strong> this quarter</p>
+          <div style="height: 100px; background: linear-gradient(90deg, var(--success) 70%, #eee 30%); border-radius: 8px; margin-top: 15px; position: relative;">
+            <div style="position: absolute; top: 10px; left: 10px; color: white; font-weight: bold;">+8.7% Return</div>
+          </div>
+          <a href="#" class="dashboard-btn">View Portfolio</a>
         </div>
-        <div onclick="showToast('Management', 'Opening account management...'); setTimeout(() => window.location.href='addcustomer.php', 1500)">
-          <div class="icon-wrapper">⚙️</div>
-          <p>Account<br>Management</p>
-        </div>
-        <div onclick="showToast('Analytics', 'Loading analytics dashboard...', 'info')">
-          <div class="icon-wrapper">📈</div>
-          <p>Analytics<br>Dashboard</p>
-        </div>
-        <div onclick="showToast('Payroll', 'Payroll services coming soon!', 'info')">
-          <div class="icon-wrapper">💼</div>
-          <p>Payroll<br>Services</p>
+        
+        <div class="dashboard-card">
+          <h3><i class="fas fa-credit-card"></i> Card Services</h3>
+          <p>Manage your debit and credit cards, set limits, and view transactions</p>
+          <div style="margin-top: 20px; display: flex; gap: 10px;">
+            <div style="width: 60px; height: 40px; background: var(--gradient-gold); border-radius: 5px;"></div>
+            <div style="width: 60px; height: 40px; background: var(--gradient-primary); border-radius: 5px;"></div>
+            <div style="width: 60px; height: 40px; background: linear-gradient(135deg, #000, #333); border-radius: 5px;"></div>
+          </div>
+          <a href="#" class="dashboard-btn">Manage Cards</a>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Features Section -->
-  <div class="features-section" id="features">
-    <h2 class="features-title">Why Choose Naman Corporation Bank?</h2>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🔐</div>
-        <h3>Bank-Grade Security</h3>
-        <p>256-bit encryption, two-factor authentication, and fraud detection to keep your money safe</p>
+  <!-- Features Carousel -->
+  <section class="features-section" id="features">
+    <h2 class="section-title">Innovative Banking Features</h2>
+    <div class="carousel-container">
+      <div class="carousel" id="carousel">
+        <div class="carousel-slide">
+          <div class="carousel-content">
+            <h2>AI-Powered Wealth Management</h2>
+            <p>Our proprietary AI algorithms analyze market trends and your financial goals to create optimized investment strategies. Real-time adjustments ensure maximum returns with managed risk.</p>
+            <div style="display: flex; gap: 20px; margin-top: 30px;">
+              <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; backdrop-filter: blur(5px);">
+                <div style="font-size: 24px; color: var(--light-gold);">+23%</div>
+                <div style="font-size: 14px;">Average Annual Returns</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; backdrop-filter: blur(5px);">
+                <div style="font-size: 24px; color: var(--light-gold);">99.9%</div>
+                <div style="font-size: 14px;">Algorithm Accuracy</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="carousel-slide">
+          <div class="carousel-content">
+            <h2>Quantum-Secure Transactions</h2>
+            <p>Utilizing post-quantum cryptography to protect your financial data against future threats. Multi-layered security with biometric authentication and behavioral analysis.</p>
+            <div style="display: flex; gap: 20px; margin-top: 30px;">
+              <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; backdrop-filter: blur(5px);">
+                <div style="font-size: 24px; color: var(--light-gold);">256-bit</div>
+                <div style="font-size: 14px;">Military-Grade Encryption</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; backdrop-filter: blur(5px);">
+                <div style="font-size: 24px; color: var(--light-gold);">Zero</div>
+                <div style="font-size: 14px;">Security Breaches Since 1840</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="carousel-slide">
+          <div class="carousel-content">
+            <h2>Global Banking Network</h2>
+            <p>Access your funds and banking services in 150 countries through our extensive global network. Real-time currency exchange and international transfers with no hidden fees.</p>
+            <div style="display: flex; gap: 20px; margin-top: 30px;">
+              <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; backdrop-filter: blur(5px);">
+                <div style="font-size: 24px; color: var(--light-gold);">150+</div>
+                <div style="font-size: 14px;">Countries</div>
+              </div>
+              <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; backdrop-filter: blur(5px);">
+                <div style="font-size: 24px; color: var(--light-gold);">24/7</div>
+                <div style="font-size: 14px;">Global Support</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon">⚡</div>
-        <h3>Instant Transfers</h3>
-        <p>Transfer money instantly to any bank account with real-time processing</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📲</div>
-        <h3>Mobile Banking</h3>
-        <p>Bank on-the-go with our feature-rich mobile app available on iOS and Android</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">💎</div>
-        <h3>Premium Benefits</h3>
-        <p>Exclusive rewards, cashback offers, and priority customer service for all members</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🌍</div>
-        <h3>Global Access</h3>
-        <p>Access your account from anywhere in the world with our international banking services</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🎯</div>
-        <h3>Smart Insights</h3>
-        <p>AI-powered financial insights and personalized recommendations for better money management</p>
+      <div class="carousel-nav">
+        <div class="carousel-btn" id="prevBtn">
+          <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="carousel-btn" id="nextBtn">
+          <i class="fas fa-chevron-right"></i>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials-section" id="testimonials">
+    <h2 class="section-title">Client Testimonials</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          "GlobalTrust transformed our family's wealth management approach. Their personalized service and innovative investment strategies have yielded exceptional returns while maintaining our risk tolerance."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">JS</div>
+          <div class="author-info">
+            <h4>Jonathan Sterling</h4>
+            <p>CEO, Sterling Enterprises</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          "The corporate banking team provided exceptional support during our international expansion. Their understanding of cross-border transactions and regulatory compliance was invaluable."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">MR</div>
+          <div class="author-info">
+            <h4>Maria Rodriguez</h4>
+            <p>CFO, TechGlobal Inc.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="testimonial-card">
+        <div class="testimonial-content">
+          "As a private banking client for over 15 years, I've experienced nothing but excellence. The digital banking platform is revolutionary, and the personal attention is unparalleled."
+        </div>
+        <div class="testimonial-author">
+          <div class="author-avatar">AW</div>
+          <div class="author-info">
+            <h4>Alexander Winthrop</h4>
+            <p>Philanthropist & Investor</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <div class="footer">
+  <footer class="footer" id="contact">
     <div class="footer-content">
+      <div class="footer-section">
+        <h3>GlobalTrust Financial</h3>
+        <p style="margin-top: 20px; max-width: 300px;">Established in 1840, we are one of the world's most trusted financial institutions, serving clients across 150 countries with integrity and innovation.</p>
+        <div class="social-links">
+          <div class="social-icon"><i class="fab fa-linkedin-in"></i></div>
+          <div class="social-icon"><i class="fab fa-twitter"></i></div>
+          <div class="social-icon"><i class="fab fa-instagram"></i></div>
+          <div class="social-icon"><i class="fab fa-youtube"></i></div>
+        </div>
+      </div>
+      
       <div class="footer-section">
         <h3>Quick Links</h3>
         <ul>
-          <li><a href="#">Block ATM Card</a></li>
-          <li><a href="#">Apply for Loan</a></li>
-          <li><a href="#">Open Account</a></li>
-          <li><a href="#">Bank Locator</a></li>
-          <li><a href="#">Download Forms</a></li>
+          <li><a href="#">Branch Locator</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Investor Relations</a></li>
+          <li><a href="#">Press & Media</a></li>
+          <li><a href="#">Regulatory Disclosures</a></li>
         </ul>
       </div>
+      
       <div class="footer-section">
         <h3>Services</h3>
         <ul>
-          <li><a href="#">NRI Services</a></li>
-          <li><a href="#">Bank Insurance</a></li>
-          <li><a href="#">Mutual Fund</a></li>
-          <li><a href="#">Salary Account</a></li>
-          <li><a href="#">Fixed Deposits</a></li>
+          <li><a href="#">Private Banking</a></li>
+          <li><a href="#">Corporate Finance</a></li>
+          <li><a href="#">Investment Banking</a></li>
+          <li><a href="#">Wealth Management</a></li>
+          <li><a href="#">Digital Banking</a></li>
         </ul>
       </div>
-      <div class="footer-section">
-        <h3>Support</h3>
-        <ul>
-          <li><a href="#">Cyber Crime Helpline</a></li>
-          <li><a href="#">Customer Care</a></li>
-          <li><a href="#">Doorstep Banking</a></li>
-          <li><a href="#">File a Complaint</a></li>
-          <li><a href="#">Track Complaint</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
+      
+      <div class="footer-section footer-contact">
         <h3>Contact Us</h3>
-        <p>📞 Toll Free: 1800-1234-5678</p>
-        <p>📧 Email: support@namanbank.com</p>
-        <p>📍 Head Office: Mumbai, India</p>
-        <p>🕒 24/7 Customer Support</p>
-        <div class="social-links">
-          <div class="social-icon"><i class="fab fa-facebook-f"></i></div>
-          <div class="social-icon"><i class="fab fa-twitter"></i></div>
-          <div class="social-icon"><i class="fab fa-instagram"></i></div>
-          <div class="social-icon"><i class="fab fa-linkedin-in"></i></div>
-        </div>
+        <p><i class="fas fa-map-marker-alt"></i> Global Headquarters: One Financial Plaza, London, UK</p>
+        <p><i class="fas fa-phone"></i> International: +44 20 7123 4567</p>
+        <p><i class="fas fa-envelope"></i> Email: contact@globaltrust.com</p>
+        <p><i class="fas fa-clock"></i> 24/7 Client Support Available</p>
       </div>
     </div>
+    
     <div class="footer-bottom">
-      <p>© 2025 Naman Corporation Bank | All Rights Reserved</p>
-      <p>Designed & Developed by Naman Gupta | Privacy Policy | Terms & Conditions | Sitemap</p>
+      <p>© 2025 GlobalTrust Financial. All Rights Reserved. | Member FDIC | Equal Housing Lender</p>
+      <p style="margin-top: 10px; font-size: 12px;">This website is a demonstration project for interview purposes only. GlobalTrust Financial is a fictional banking institution.</p>
     </div>
-  </div>
+  </footer>
 
-  <!-- Security Badge -->
-  <div class="security-badge" onclick="showSecurityModal()">
-    Secured Connection
-  </div>
-
-  <!-- Quick Actions Button -->
-  <div class="quick-actions">
-    <div class="quick-action-btn" onclick="toggleQuickMenu()" title="Quick Actions">
-      <i class="fas fa-bolt"></i>
-    </div>
-    <div class="quick-menu" id="quickMenu">
-      <div class="quick-menu-item" onclick="showToast('ATM Locator', 'Opening ATM locator...')">
-        <i class="fas fa-map-marker-alt"></i>
-        <span>Find ATM</span>
-      </div>
-      <div class="quick-menu-item" onclick="showToast('Currency', 'Opening currency exchange...')">
-        <i class="fas fa-exchange-alt"></i>
-        <span>Currency Exchange</span>
-      </div>
-      <div class="quick-menu-item" onclick="showToast('Calculator', 'Opening EMI calculator...')">
-        <i class="fas fa-calculator"></i>
-        <span>EMI Calculator</span>
-      </div>
-      <div class="quick-menu-item" onclick="showToast('Support', 'Opening chat support...')">
-        <i class="fas fa-comments"></i>
-        <span>Chat Support</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Chat Widget -->
-  <div class="chat-widget" onclick="openChat()" title="Chat with us">
-    <i class="fas fa-comment-dots"></i>
-  </div>
-
-  <!-- Theme Toggle -->
-  <div class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
-    <i class="fas fa-moon"></i>
-  </div>
-
-  <!-- Scroll to Top -->
-  <div class="scroll-top" onclick="scrollToTop()">
-    <i class="fas fa-chevron-up"></i>
-  </div>
-
-  <!-- Toast Notification -->
-  <div class="toast" id="toast">
-    <div class="toast-icon">✓</div>
-    <div class="toast-content">
-      <div class="toast-title" id="toastTitle">Success</div>
-      <div class="toast-message" id="toastMessage">Operation completed successfully</div>
-    </div>
-    <div class="toast-close" onclick="hideToast()">×</div>
-  </div>
-
-  <!-- Modal -->
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <div class="modal-close" onclick="closeModal()">×</div>
-      <h2 class="modal-title" id="modalTitle">Frequently Asked Questions</h2>
-      <div class="modal-text" id="modalText">
-        <p><strong>Q: How do I reset my password?</strong><br>
-        A: Click on "Forgot Password" on the login page and follow the instructions.</p>
-        
-        <p><strong>Q: What are the transaction limits?</strong><br>
-        A: Personal accounts: ₹1,00,000 per day. Corporate accounts: ₹10,00,000 per day.</p>
-        
-        <p><strong>Q: Is mobile banking secure?</strong><br>
-        A: Yes, we use 256-bit encryption and biometric authentication for maximum security.</p>
-        
-        <p><strong>Q: How do I block my ATM card?</strong><br>
-        A: Call our 24/7 helpline at 1800-1234-5678 or use the "Block ATM Card" option in the app.</p>
-      </div>
-      <div class="modal-buttons">
-        <button class="modal-btn modal-btn-secondary" onclick="closeModal()">Close</button>
-        <button class="modal-btn modal-btn-primary" onclick="contactSupport()">Contact Support</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Progress Bar -->
-  <div class="progress-container">
-    <div class="progress-bar" id="progressBar"></div>
+  <!-- Notification Badge -->
+  <div class="notification-badge" id="notificationBadge">
+    <i class="fas fa-bell"></i>
+    <span>Secure Login Available</span>
   </div>
 
   <script>
-    // CSS Variables for dynamic theming
-    const root = document.documentElement;
-    
+    // Initialize loading screen
+    window.addEventListener('load', function() {
+      setTimeout(() => {
+        document.getElementById('loadingScreen').style.opacity = '0';
+        setTimeout(() => {
+          document.getElementById('loadingScreen').style.display = 'none';
+          // Start animations after loading
+          startAnimations();
+        }, 500);
+      }, 2000);
+    });
+
     // Navbar scroll effect
     window.addEventListener('scroll', function() {
-      const navbar = document.querySelector('.navbar');
-      const scrollTop = document.querySelector('.scroll-top');
-      
+      const navbar = document.getElementById('navbar');
       if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');
       }
-      
-      if (window.scrollY > 300) {
-        scrollTop.classList.add('visible');
-      } else {
-        scrollTop.classList.remove('visible');
-      }
-      
-      // Update progress bar
-      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (window.scrollY / windowHeight) * 100;
-      document.getElementById('progressBar').style.width = scrolled + '%';
     });
-
-    // Scroll to top function
-    function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }
-
-    // Toast notification
-    function showToast(title, message, type = 'success') {
-      const toast = document.getElementById('toast');
-      const toastTitle = document.getElementById('toastTitle');
-      const toastMessage = document.getElementById('toastMessage');
-      const toastIcon = toast.querySelector('.toast-icon');
-      
-      toastTitle.textContent = title;
-      toastMessage.textContent = message;
-      
-      if (type === 'success') {
-        toastIcon.textContent = '✓';
-        toast.style.borderLeftColor = '#28a745';
-      } else if (type === 'info') {
-        toastIcon.textContent = 'ℹ';
-        toast.style.borderLeftColor = '#17a2b8';
-      } else if (type === 'warning') {
-        toastIcon.textContent = '⚠';
-        toast.style.borderLeftColor = '#ffc107';
-      }
-      
-      toast.classList.add('show');
-      
-      setTimeout(() => {
-        hideToast();
-      }, 4000);
-    }
-
-    function hideToast() {
-      document.getElementById('toast').classList.remove('show');
-    }
-
-    // Modal functions
-    function showModal() {
-      event.preventDefault();
-      document.getElementById('modal').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-      document.getElementById('modal').classList.remove('active');
-      document.body.style.overflow = 'auto';
-    }
-
-    function showSecurityModal() {
-      const modal = document.getElementById('modal');
-      const title = document.getElementById('modalTitle');
-      const text = document.getElementById('modalText');
-      
-      title.textContent = 'Security Information';
-      text.innerHTML = `
-        <p><strong>Your connection is secured with:</strong></p>
-        <ul style="margin-left: 20px; line-height: 2;">
-          <li>256-bit SSL/TLS Encryption</li>
-          <li>Two-Factor Authentication (2FA)</li>
-          <li>Real-time Fraud Detection</li>
-          <li>Biometric Authentication Support</li>
-          <li>PCI DSS Compliance</li>
-        </ul>
-        <p style="margin-top: 15px;">We monitor all transactions 24/7 to ensure your money is safe and secure.</p>
-      `;
-      
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function contactSupport() {
-      closeModal();
-      showToast('Support', 'Opening support chat...', 'info');
-      setTimeout(() => {
-        window.location.href = 'contactus.html';
-      }, 1500);
-    }
-
-    // Quick menu toggle
-    function toggleQuickMenu() {
-      const quickMenu = document.getElementById('quickMenu');
-      quickMenu.classList.toggle('active');
-    }
-
-    // Close quick menu when clicking outside
-    document.addEventListener('click', function(event) {
-      const quickActions = document.querySelector('.quick-actions');
-      const quickMenu = document.getElementById('quickMenu');
-      
-      if (!quickActions.contains(event.target) && quickMenu.classList.contains('active')) {
-        quickMenu.classList.remove('active');
-      }
-    });
-
-    // Language dropdown toggle
-    function toggleLanguageDropdown() {
-      const dropdown = document.getElementById('languageDropdown');
-      dropdown.classList.toggle('active');
-    }
-
-    // Close language dropdown when clicking outside
-    document.addEventListener('click', function(event) {
-      const languageSelector = document.querySelector('.language-selector');
-      const dropdown = document.getElementById('languageDropdown');
-      
-      if (!languageSelector.contains(event.target) && dropdown.classList.contains('active')) {
-        dropdown.classList.remove('active');
-      }
-    });
-
-    function changeLanguage(lang) {
-      showToast('Language', `Language changed to ${lang.toUpperCase()}`, 'info');
-      document.getElementById('languageDropdown').classList.remove('active');
-      // In a real application, you would implement actual language switching here
-    }
 
     // Mobile menu toggle
-    function toggleMobileMenu() {
-      const navbar = document.querySelector('.navbar ul');
-      const hamburger = document.querySelector('.hamburger');
+    document.getElementById('hamburger').addEventListener('click', function() {
+      const navMenu = document.getElementById('navMenu');
+      const hamburger = this;
       
-      navbar.classList.toggle('active');
+      navMenu.classList.toggle('active');
       hamburger.classList.toggle('active');
-    }
-
-    // Dark mode toggle
-    function toggleTheme() {
-      document.body.classList.toggle('dark-mode');
-      const themeIcon = document.querySelector('.theme-toggle i');
       
-      if (document.body.classList.contains('dark-mode')) {
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
-        localStorage.setItem('theme', 'dark');
+      if (navMenu.classList.contains('active')) {
+        hamburger.children[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+        hamburger.children[1].style.opacity = '0';
+        hamburger.children[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
       } else {
-        themeIcon.classList.remove('fa-sun');
-        themeIcon.classList.add('fa-moon');
-        localStorage.setItem('theme', 'light');
-      }
-    }
-
-    // Check for saved theme preference
-    if (localStorage.getItem('theme') === 'dark') {
-      document.body.classList.add('dark-mode');
-      const themeIcon = document.querySelector('.theme-toggle i');
-      themeIcon.classList.remove('fa-moon');
-      themeIcon.classList.add('fa-sun');
-    }
-
-    // Chat function
-    function openChat() {
-      showToast('Chat', 'Opening chat window...', 'info');
-      // In a real application, this would open a chat interface
-    }
-
-    // Animated counter for statistics
-    function animateCounter(element, target) {
-      let current = 0;
-      const increment = target / 100;
-      const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-          element.textContent = target;
-          clearInterval(timer);
-        } else {
-          element.textContent = Math.floor(current);
-        }
-      }, 20);
-    }
-
-    // Trigger counter animation when in viewport
-    const observerOptions = {
-      threshold: 0.5
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const counters = entry.target.querySelectorAll('.stat-number');
-          counters.forEach(counter => {
-            const target = counter.textContent;
-            if (target.includes('+')) {
-              const num = parseInt(target.replace(/\D/g, ''));
-              let current = 0;
-              const increment = num / 50;
-              const timer = setInterval(() => {
-                current += increment;
-                if (current >= num) {
-                  counter.textContent = target;
-                  clearInterval(timer);
-                } else {
-                  counter.textContent = Math.floor(current) + 'M+';
-                }
-              }, 30);
-            } else if (target.includes('%')) {
-              const num = parseFloat(target.replace('%', ''));
-              let current = 0;
-              const increment = num / 50;
-              const timer = setInterval(() => {
-                current += increment;
-                if (current >= num) {
-                  counter.textContent = target;
-                  clearInterval(timer);
-                } else {
-                  counter.textContent = current.toFixed(1) + '%';
-                }
-              }, 30);
-            }
-          });
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
-
-    // Observe hero stats section
-    const heroStats = document.querySelector('.hero-stats');
-    if (heroStats) {
-      observer.observe(heroStats);
-    }
-
-    // Create floating particles
-    function createParticles() {
-      const colors = ['rgba(0,61,122,0.1)', 'rgba(255,215,0,0.1)'];
-      for (let i = 0; i < 5; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.width = Math.random() * 100 + 50 + 'px';
-        particle.style.height = particle.style.width;
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.top = Math.random() * 100 + '%';
-        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.animationDelay = Math.random() * 5 + 's';
-        particle.style.animationDuration = Math.random() * 10 + 10 + 's';
-        document.body.appendChild(particle);
-      }
-    }
-
-    // Initialize
-    window.addEventListener('load', () => {
-      createParticles();
-      showToast('Welcome', 'Welcome to Naman Corporation Bank - Your trusted banking partner!', 'success');
-      
-      // Add loading animation to cards
-      const cards = document.querySelectorAll('.card');
-      cards.forEach((card, index) => {
-        card.style.animationDelay = `${index * 0.1}s`;
-      });
-    });
-
-    // Close modal on outside click
-    document.getElementById('modal').addEventListener('click', function(e) {
-      if (e.target === this) {
-        closeModal();
+        hamburger.children[0].style.transform = 'none';
+        hamburger.children[1].style.opacity = '1';
+        hamburger.children[2].style.transform = 'none';
       }
     });
 
-    // Keyboard shortcuts
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeModal();
-        hideToast();
-        document.getElementById('quickMenu').classList.remove('active');
-        document.getElementById('languageDropdown').classList.remove('active');
-      }
-      
-      // Accessibility: Focus trap for modal
-      if (e.key === 'Tab' && document.getElementById('modal').classList.contains('active')) {
-        const focusableElements = document.querySelectorAll('.modal button, .modal a, .modal input, .modal select, .modal textarea');
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
+    // Animated counters
+    function startAnimations() {
+      // Counter animation
+      const counters = document.querySelectorAll('.stat-number');
+      counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-count'));
+        const suffix = counter.textContent.includes('Trillion') ? ' Trillion' : 
+                      counter.textContent.includes('Countries') ? '' : 
+                      counter.textContent.includes('Years') ? '' : '%';
         
-        if (e.shiftKey) {
-          if (document.activeElement === firstElement) {
-            lastElement.focus();
-            e.preventDefault();
+        let current = 0;
+        const increment = target / 100;
+        
+        const updateCounter = () => {
+          if (current < target) {
+            current += increment;
+            counter.textContent = suffix === '%' ? current.toFixed(1) + suffix : Math.floor(current) + suffix;
+            setTimeout(updateCounter, 20);
+          } else {
+            counter.textContent = suffix === '%' ? target.toFixed(1) + suffix : target + suffix;
           }
-        } else {
-          if (document.activeElement === lastElement) {
-            firstElement.focus();
-            e.preventDefault();
+        };
+        
+        // Start counter when in viewport
+        const observer = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) {
+            updateCounter();
+            observer.unobserve(counter.parentElement);
           }
-        }
-      }
-    });
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href !== '#faq') {
-          e.preventDefault();
-          const target = document.querySelector(href);
-          if (target) {
-            target.scrollIntoView({
-              behavior: 'smooth',
-              block: 'start'
-            });
-          }
-        }
+        }, { threshold: 0.5 });
+        
+        observer.observe(counter.parentElement);
       });
-    });
 
-    // Performance optimization: Lazy load images
-    if ('IntersectionObserver' in window) {
-      const imageObserver = new IntersectionObserver((entries, observer) => {
+      // Carousel functionality
+      const carousel = document.getElementById('carousel');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      let currentSlide = 0;
+      const totalSlides = 3;
+
+      function updateCarousel() {
+        carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+      }
+
+      nextBtn.addEventListener('click', () => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+        animateCarouselContent();
+      });
+
+      prevBtn.addEventListener('click', () => {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+        animateCarouselContent();
+      });
+
+      // Auto-rotate carousel
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+        animateCarouselContent();
+      }, 8000);
+
+      // Animate carousel content
+      function animateCarouselContent() {
+        const content = carousel.children[currentSlide].querySelector('.carousel-content');
+        content.style.animation = 'none';
+        setTimeout(() => {
+          content.style.animation = 'slideInLeft 1s ease';
+        }, 10);
+      }
+
+      // Notification badge interaction
+      const notificationBadge = document.getElementById('notificationBadge');
+      notificationBadge.addEventListener('click', () => {
+        notificationBadge.innerHTML = '<i class="fas fa-check"></i><span>Secure Login Activated</span>';
+        notificationBadge.style.background = 'linear-gradient(135deg, #2ecc71, #27ae60)';
+        
+        setTimeout(() => {
+          notificationBadge.innerHTML = '<i class="fas fa-bell"></i><span>Secure Login Available</span>';
+          notificationBadge.style.background = 'var(--gradient-gold)';
+        }, 3000);
+      });
+
+      // Animate elements on scroll
+      const animatedElements = document.querySelectorAll('.service-card, .dashboard-card, .testimonial-card');
+      const elementObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            const img = entry.target;
-            img.src = img.dataset.src;
-            img.classList.remove('lazy');
-            imageObserver.unobserve(img);
+            entry.target.style.animationPlayState = 'running';
+            elementObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      animatedElements.forEach(element => {
+        element.style.animationPlayState = 'paused';
+        elementObserver.observe(element);
+      });
+
+      // Parallax effect for hero background
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const heroBg = document.querySelector('.hero-bg');
+        if (heroBg) {
+          heroBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
+      });
+
+      // Add ripple effect to buttons
+      document.addEventListener('click', function(e) {
+        if (e.target.matches('.dashboard-btn, .nav-cta, .service-cta')) {
+          const button = e.target;
+          const ripple = document.createElement('span');
+          const rect = button.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          const x = e.clientX - rect.left - size / 2;
+          const y = e.clientY - rect.top - size / 2;
+          
+          ripple.style.cssText = `
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            width: ${size}px;
+            height: ${size}px;
+            left: ${x}px;
+            top: ${y}px;
+            pointer-events: none;
+          `;
+          
+          button.style.position = 'relative';
+          button.style.overflow = 'hidden';
+          button.appendChild(ripple);
+          
+          setTimeout(() => ripple.remove(), 600);
+        }
+      });
+
+      // Add CSS for ripple
+      const rippleStyle = document.createElement('style');
+      rippleStyle.textContent = `
+        @keyframes ripple {
+          to {
+            transform: scale(4);
+            opacity: 0;
+          }
+        }
+      `;
+      document.head.appendChild(rippleStyle);
+
+      // Interactive floating elements
+      const floatingElements = document.querySelectorAll('.floating-element');
+      floatingElements.forEach(element => {
+        element.addEventListener('mouseenter', () => {
+          element.style.animationPlayState = 'paused';
+          element.style.transform += ' scale(1.1)';
+          element.style.boxShadow = '0 15px 40px rgba(0, 24, 69, 0.2)';
+        });
+        
+        element.addEventListener('mouseleave', () => {
+          element.style.animationPlayState = 'running';
+          element.style.transform = element.style.transform.replace(' scale(1.1)', '');
+          element.style.boxShadow = '0 10px 30px rgba(0, 24, 69, 0.1)';
+        });
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 100,
+              behavior: 'smooth'
+            });
+            
+            // Close mobile menu if open
+            if (window.innerWidth <= 768) {
+              document.getElementById('navMenu').classList.remove('active');
+              document.getElementById('hamburger').classList.remove('active');
+            }
           }
         });
       });
 
-      document.querySelectorAll('img[data-src]').forEach(img => {
-        imageObserver.observe(img);
+      // Keyboard navigation for carousel
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          prevBtn.click();
+        } else if (e.key === 'ArrowRight') {
+          nextBtn.click();
+        }
       });
+
+      // Simulate live data updates
+      setInterval(() => {
+        const portfolioElement = document.querySelector('.dashboard-card:nth-child(3) strong');
+        if (portfolioElement) {
+          const currentValue = parseFloat(portfolioElement.textContent.replace('+', '').replace('%', ''));
+          const newValue = currentValue + (Math.random() - 0.5) * 0.5;
+          portfolioElement.textContent = `+${newValue.toFixed(1)}%`;
+          portfolioElement.style.color = newValue >= currentValue ? 'var(--success)' : 'var(--danger)';
+        }
+      }, 10000);
+
+      // Add particle system for hero section
+      createParticles();
     }
 
-    // Service Worker Registration for PWA capabilities
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(registration => {
-            console.log('SW registered: ', registration);
-          })
-          .catch(registrationError => {
-            console.log('SW registration failed: ', registrationError);
-          });
-      });
-    }
-
-    // Add ripple effect to buttons
-    document.addEventListener('click', function(e) {
-      if (e.target.matches('.login-btn, .modal-btn, .card-links div')) {
-        const button = e.target;
-        const ripple = document.createElement('span');
-        const rect = button.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
+    // Create particle system
+    function createParticles() {
+      const heroSection = document.querySelector('.hero-section');
+      if (!heroSection) return;
+      
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.style.cssText = `
+          position: absolute;
+          width: ${Math.random() * 4 + 1}px;
+          height: ${Math.random() * 4 + 1}px;
+          background: rgba(255, 255, 255, ${Math.random() * 0.5 + 0.2});
+          border-radius: 50%;
+          top: ${Math.random() * 100}%;
+          left: ${Math.random() * 100}%;
+          animation: particleFloat ${Math.random() * 10 + 10}s infinite linear;
+          z-index: 1;
+        `;
         
-        ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        ripple.classList.add('ripple');
-        
-        button.appendChild(ripple);
-        
-        setTimeout(() => {
-          ripple.remove();
-        }, 600);
+        heroSection.appendChild(particle);
       }
+      
+      const particleStyle = document.createElement('style');
+      particleStyle.textContent = `
+        @keyframes particleFloat {
+          0% {
+            transform: translateY(0) translateX(0);
+            opacity: 0;
+          }
+          10% {
+            opacity: 1;
+          }
+          90% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(-100vh) translateX(${Math.random() > 0.5 ? '-' : ''}${Math.random() * 100}px);
+            opacity: 0;
+          }
+        }
+      `;
+      document.head.appendChild(particleStyle);
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Preload critical elements
+      const criticalElements = [
+        '.navbar',
+        '.hero-section',
+        '.services-section',
+        '.dashboard'
+      ];
+      
+      criticalElements.forEach(selector => {
+        const element = document.querySelector(selector);
+        if (element) {
+          element.style.willChange = 'transform, opacity';
+        }
+      });
     });
 
-    // Add CSS for ripple effect
-    const style = document.createElement('style');
-    style.textContent = `
-      .ripple {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.6);
-        transform: scale(0);
-        animation: ripple-animation 0.6s linear;
-        pointer-events: none;
-      }
-      
-      @keyframes ripple-animation {
-        to {
-          transform: scale(4);
-          opacity: 0;
+    // Handle window resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        // Update any responsive elements
+        const carousel = document.getElementById('carousel');
+        if (carousel) {
+          carousel.style.transition = 'none';
+          carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+          setTimeout(() => {
+            carousel.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+          }, 10);
         }
-      }
-      
-      .login-btn, .modal-btn, .card-links div {
-        position: relative;
-        overflow: hidden;
-      }
-    `;
-    document.head.appendChild(style);
-  </script>
+      }, 250);
+    });
 
+    // Print functionality
+    window.addEventListener('beforeprint', () => {
+      document.body.classList.add('printing');
+    });
+    
+    window.addEventListener('afterprint', () => {
+      document.body.classList.remove('printing');
+    });
+  </script>
 </body>
 </html>
